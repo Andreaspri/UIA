@@ -1,0 +1,51 @@
+@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Welcome Back";
+}
+
+
+<div class="container">
+    <div class="card card-container">
+        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <form id="account" method="post">
+            <div class="form-group">
+                <input id="input-email"  asp-for="Input.Email" class="form-control" required autofocus/>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input id="input-password" asp-for="Input.Password" class="form-control" required/>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div id="remember" class="checkbox">
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMe">
+                        <input asp-for="Input.RememberMe"/>
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block btn-login" type="submit">Log in</button>
+            </div>
+            <div class="form-group">
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register new user</a>
+            </div>
+            <div class="form-group">
+                <a href="#" class="forgot-password">
+                    <a id="forgot-password" asp-page="./ForgotPassword">Forgot password?</a>
+                </a>
+            </div>
+            <div class="form-group">
+                <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend activation email</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

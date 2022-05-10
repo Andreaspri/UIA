@@ -1,0 +1,17 @@
+50 50       /* size of the maze */
+<20 , 21>   /* (x, y)-coordinates of the first obstacle  */
+<20 , 22>   /* (x, y)-coordinates of the second obstacles */
+<20 , 23>   /* There NEEDS to be an extra line at the bottom */
+<20 , 24>   /* The last line of data is a set of coordinates */
+<20 , 25>   /* DO NOT USE NUMBERS, COMMAS OR ANY BRACKETS IN COMMENTS */
+<20 , 26>
+<27 , 24>
+<27 , 25>
+<27 , 26>
+<24 , 28>
+<25 , 28>
+<26 , 28>
+<27 , 28>
+<28 , 28>
+<29 , 28>
+{((46 , 46),(2 , 4)), ((6 , 22),(15 , 25)), ((8 , 22),(19 , 25)), ((20 , 12),(45 , 4)), ((19 , 40),(28 , 33)), ((18 , 2),(14 , 23))}

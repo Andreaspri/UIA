@@ -1,0 +1,42 @@
+﻿
+<div id="login-sidebar-breaker">
+    @* Only show the sidebar div if the user is logged in and can access the main index *@
+    <div class="border-end" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+            <div class="wrapper"> @* TODO: Update CSS classes from black-dashboard to our new theme *@
+                <div class="sidebar">
+                    <div class="sidebar-wrapper">
+                        <div id="sidebar-contacts">
+                            <tr class="noBorder">
+                                <td class="noBorder">
+                                    <a class="nav-link text-dark uni-nav-contacts" asp-controller="ApplicationUser" asp-action="Friends">
+                                        @* TODO: Add hover function for Contacts *@
+                                        <span class="hovertext" data-hover="Contacts">
+                                            <img class="rounded-circle"  alt="Contacts" src="~/assets/img/profle-svgrepo-com.svg" width="50" height="50">
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </div>
+                        <div id="sidebar-group-create">
+                            <tr class="noBorder">
+                                <td class="noBorder">
+                                    <a class="nav-link text-dark uni-nav-create-group" asp-controller="Group" asp-action="Create">
+                                        @* TODO: Add hover function for Create Group *@
+                                        <span class="hovertext" data-hover="Create Group">
+                                            <img class="rounded-circle" alt="Create Group" src="~/assets/img/team-group-svgrepo-com.svg" width="50" height="50">
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </div>
+                        <div id="sidebar-group-showcase">
+                            @* Will be filled with user groups *@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

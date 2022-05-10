@@ -1,0 +1,44 @@
+﻿@model IEnumerable<UNIMEET.Data.ApplicationUser>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <td>
+                <div>Placeholder for contacts partial view</div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@* TODO: Redesign contacts user-group list placeholder to fit design mockup *@
+<dl class="row">
+    
+    <dt class="col-sm-4">Nickname</dt> <dt class="col-sm-4">Email</dt> <dt class="col-sm-4">Status</dt>
+    @foreach(var a in Model)
+    {
+        <form class="row col-sm-12" asp-action="NewContactRequest">
+            <input name="id" type="hidden" value="@a.Id"/>
+            <dd class="col-sm-4"> <a class="nav-link text-danger" asp-controller="ApplicationUser" asp-action="Details" asp-route-id="@a.Id">@a.Nickname</a></dd> 
+            <dd class="col-sm-4">@a.Email</dd> 
+            @if (a.Contacts.Contains(ViewData["CurrentApplicationUser"]))
+            {
+                <dd class="col-sm-4"> @("Contact of yours")</dd>
+            }
+            else if (a.ContactRequestSender.Contains(ViewData["CurrentApplicationUser"]))
+            {
+                <dd class="col-sm-4"> @("Contact request sent")</dd>
+            }
+            else if (a.ContactRequestReceiver.Contains(ViewData["CurrentApplicationUser"]))
+            {
+                <dd class="col-sm-4"> @("You have a contact request from this user")</dd>
+            }
+            else
+            {
+                <dd class="col-sm-4"> <input type="submit" value="Send contact request"/> </dd>
+            }
+        </form>
+        
+    }
+</dl>
+
+

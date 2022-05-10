@@ -1,0 +1,44 @@
+﻿@model IEnumerable<assignment_4.Models.Blog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Add">Add</a>
+</p>
+
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Nickname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Summary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time.Date)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+
+        @foreach(var a in Model.Reverse())
+        {
+            <partial name="_PostPartial" model="a"/>
+        }
+    </tbody>
+</table>
+

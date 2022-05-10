@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Http.Features
+
+@{
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var showBanner = !consentFeature?.CanTrack ?? false;
+    var cookieString = consentFeature?.CreateConsentCookie();
+}
+
+@if (showBanner)
+{
+    <div id="cookieConsent" class="alert alert-info alert-dismissible fade show" role="alert">
+        <div class="row" id="gdpr-notice">
+            <div class="col-md-11 col-sm-11 col-xs-11">
+                Welcome to UNIMEET. We value your privacy, and require your consent to store any data you decide to share with us.
+                Sadly we use a database that is unable to encrypt your data, and as such you should only use this service if you
+                agree to us storing your information in an unencrypted format. That said, we do not store any personal sensitive
+                information, unless recovered by proxy from your own calendar that you must share with us for our services to
+                operate.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 col-sm-5 col-xs-5">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Learn More</a>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5">
+                <button type="button" class="accept-policy close" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
+                    <span aria-hidden="true">Accept</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var button = document.querySelector("#cookieConsent button[data-cookie-string]");
+            button.addEventListener("click", function (event) {
+                document.cookie = button.dataset.cookieString;
+            }, false);
+        })();
+    </script>
+}
+@*
+    To encrypt our database we need to use a modified version of SQLite.
+    For details, check out: https://docs.microsoft.com/en-us/dotnet/standard/data/sqlite/encryption?tabs=netcore-cli
+*@

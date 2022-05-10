@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Andreas/ikt203/worksheets/slett/main.cpp
+cstdio
+-
+cstdlib
+-
+graphics.h
+-
+patterns.h
+C:/Users/Andreas/ikt203/worksheets/slett/patterns.h
+
+C:/Users/Andreas/ikt203/worksheets/slett/patterns.h
+

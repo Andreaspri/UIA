@@ -1,0 +1,743 @@
+        -:    0:Source:C:/Users/Andreas/ikt203_projects/projects/project 5 Air Traffic Controller/includes/Graphics.cpp
+        -:    0:Graph:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\includes\Graphics.cpp.gcno
+        -:    0:Data:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\includes\Graphics.cpp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1://
+        -:    2:// Created by Andreas on 29.09.2021.
+        -:    3://
+        -:    4:
+        -:    5:#include "Graphics.h"
+        -:    6:/*
+        -:    7:sf::Vector2f new_position(sf::Vector2f vector){
+        -:    8:    float a[2][2];
+        -:    9:    sf::Vector2f sum;
+        -:   10:
+        -:   11:    // Rotational matrix
+        -:   12:    a[0][0] = cos(DELTA_ANGLE);
+        -:   13:    a[0][1] = -sin(DELTA_ANGLE);
+        -:   14:    a[1][0] = sin(DELTA_ANGLE);
+        -:   15:    a[1][1] = cos(DELTA_ANGLE);
+        -:   16:
+        -:   17:    sum.x = a[0][0]*(vector.x-WIDTH/2) + a[0][1]*(vector.y-HEIGHT/2) + WIDTH/2;
+        -:   18:    sum.y = a[1][0]*(vector.x-WIDTH/2) + a[1][1]*(vector.y-HEIGHT/2) + HEIGHT/2;
+        -:   19:
+        -:   20:    return sum;
+        -:   21:}
+        -:   22:*/
+        -:   23:
+        -:   24:namespace game {
+function _ZN4game15Game_backgroundC2EN2sf5ColorEP5Queue called 1 returned 100% blocks executed 64%
+        1:   25:    Game_background::Game_background( sf::Color color_circle, Queue *aircrafts) :
+        1:   25-block  0
+        1:   26:            shape((float) (std::min(WIDTH, HEIGHT) - SPACING) / 2){
+        1:   26-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0 (throw)
+        1:   26-block  1
+call    5 returned 1
+    %%%%%:   26-block  2
+    %%%%%:   26-block  3
+    %%%%%:   26-block  4
+call    6 never executed
+    %%%%%:   26-block  5
+call    7 never executed
+    %%%%%:   26-block  6
+call    8 never executed
+        1:   27:        shape.setFillColor(color_circle);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   28:        shape.setOrigin((sf::Vector2f(shape.getRadius(), shape.getRadius())));
+        1:   28-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   28-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   28-block  2
+call    6 returned 1
+call    7 returned 1
+branch  8 taken 1 (fallthrough)
+branch  9 taken 0 (throw)
+    %%%%%:   28-block  3
+        1:   29:        shape.setPosition((float)WIDTH/2, (float)HEIGHT/2);
+        1:   29-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   30:        shape.setOutlineColor(LINE_COLOR);
+        1:   30-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   31:        shape.setOutlineThickness(CIRCLE_LINE_THICC);
+        1:   31-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   32:        //sf::Vector2f starting_position(shape.getRadius() + (float)WIDTH/2, (float)HEIGHT/2);
+        -:   33:        //rectangles = (std::vector<sf::RectangleShape> *)malloc(sizeof(std::vector<sf::RectangleShape>))
+        1:   34:        planes = aircrafts;
+        1:   35:        degrees = 0;
+        -:   36:
+        1:   37:    }
+        1:   37-block  0
+        -:   38:
+function _ZN4game15Game_backgroundD0Ev called 0 returned 0% blocks executed 0%
+function _ZN4game15Game_backgroundD2Ev called 1 returned 100% blocks executed 100%
+        2:   39:    Game_background::~Game_background() {
+    $$$$$:   39-block  0
+        1:   39-block  1
+        1:   39-block  2
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+    #####:   40:    }
+    $$$$$:   40-block  0
+call    0 never executed
+call    1 never executed
+        -:   41:
+        -:   42:
+function _ZNK4game15Game_background4drawERN2sf12RenderTargetENS1_12RenderStatesE called 50 returned 100% blocks executed 76%
+       50:   43:    void Game_background::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+       50:   43-block  0
+      100:   44:        sf::VertexArray line(sf::LineStrip, 2);
+       50:   44-block  0
+call    0 returned 50
+branch  1 taken 50 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 50
+    %%%%%:   44-block  1
+call    4 never executed
+        -:   45:        // Generate background line grid
+     1500:   46:        for (int x = 0; x <= WIDTH; x += GRID_DELTA){
+       50:   46-block  0
+     1500:   46-block  1
+branch  0 taken 1450 (fallthrough)
+branch  1 taken 50
+     1450:   46-block  2
+     1450:   47:            line[0] = sf::Vector2f((float)x, 0);
+     1450:   47-block  0
+call    0 returned 1450
+call    1 returned 1450
+branch  2 taken 1450 (fallthrough)
+branch  3 taken 0 (throw)
+     1450:   47-block  1
+call    4 returned 1450
+branch  5 taken 1450 (fallthrough)
+branch  6 taken 0 (throw)
+    %%%%%:   47-block  2
+    %%%%%:   47-block  3
+     1450:   48:            line[0].color = GREEN;
+     1450:   48-block  0
+call    0 returned 1450
+branch  1 taken 1450 (fallthrough)
+branch  2 taken 0 (throw)
+     1450:   48-block  1
+call    3 returned 1450
+branch  4 taken 1450 (fallthrough)
+branch  5 taken 0 (throw)
+    %%%%%:   48-block  2
+     1450:   49:            line[1] = sf::Vector2f((float)x, HEIGHT);
+     1450:   49-block  0
+call    0 returned 1450
+call    1 returned 1450
+branch  2 taken 1450 (fallthrough)
+branch  3 taken 0 (throw)
+     1450:   49-block  1
+call    4 returned 1450
+branch  5 taken 1450 (fallthrough)
+branch  6 taken 0 (throw)
+    %%%%%:   49-block  2
+    %%%%%:   49-block  3
+     1450:   50:            line[1].color = GREEN;
+     1450:   50-block  0
+call    0 returned 1450
+branch  1 taken 1450 (fallthrough)
+branch  2 taken 0 (throw)
+     1450:   50-block  1
+call    3 returned 1450
+branch  4 taken 1450 (fallthrough)
+branch  5 taken 0 (throw)
+    %%%%%:   50-block  2
+     1450:   51:            target.draw(line, states);
+     1450:   51-block  0
+call    0 returned 1450
+branch  1 taken 1450 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   52:        }
+     1000:   53:        for (int y = 0; y <= HEIGHT; y += GRID_DELTA){
+       50:   53-block  0
+     1000:   53-block  1
+branch  0 taken 950 (fallthrough)
+branch  1 taken 50
+      950:   53-block  2
+      950:   54:            line[0] = sf::Vector2f(0, (float)y);
+      950:   54-block  0
+call    0 returned 950
+call    1 returned 950
+branch  2 taken 950 (fallthrough)
+branch  3 taken 0 (throw)
+      950:   54-block  1
+call    4 returned 950
+branch  5 taken 950 (fallthrough)
+branch  6 taken 0 (throw)
+    %%%%%:   54-block  2
+    %%%%%:   54-block  3
+      950:   55:            line[0].color = GREEN;
+      950:   55-block  0
+call    0 returned 950
+branch  1 taken 950 (fallthrough)
+branch  2 taken 0 (throw)
+      950:   55-block  1
+call    3 returned 950
+branch  4 taken 950 (fallthrough)
+branch  5 taken 0 (throw)
+    %%%%%:   55-block  2
+      950:   56:            line[1] = sf::Vector2f(WIDTH, float(y));
+      950:   56-block  0
+call    0 returned 950
+call    1 returned 950
+branch  2 taken 950 (fallthrough)
+branch  3 taken 0 (throw)
+      950:   56-block  1
+call    4 returned 950
+branch  5 taken 950 (fallthrough)
+branch  6 taken 0 (throw)
+    %%%%%:   56-block  2
+    %%%%%:   56-block  3
+      950:   57:            line[1].color = GREEN;
+      950:   57-block  0
+call    0 returned 950
+branch  1 taken 950 (fallthrough)
+branch  2 taken 0 (throw)
+      950:   57-block  1
+call    3 returned 950
+branch  4 taken 950 (fallthrough)
+branch  5 taken 0 (throw)
+    %%%%%:   57-block  2
+      950:   58:            target.draw(line, states);
+      950:   58-block  0
+call    0 returned 950
+branch  1 taken 950 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   59:        }
+       50:   60:        target.draw(shape, states);
+       50:   60-block  0
+call    0 returned 50
+branch  1 taken 50 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   61:
+        -:   62:
+        -:   63:        // Generate radar circles
+      600:   64:        for (int i = 0; i < (int)shape.getRadius(); i += CIRCLE_SPACER){
+       50:   64-block  0
+      600:   64-block  1
+call    0 returned 600
+branch  1 taken 600 (fallthrough)
+branch  2 taken 0 (throw)
+      600:   64-block  2
+branch  3 taken 550 (fallthrough)
+branch  4 taken 50
+     1100:   65:            sf::CircleShape circle_lines(shape.getRadius()-(float)i);
+      550:   65-block  0
+call    0 returned 550
+branch  1 taken 550 (fallthrough)
+branch  2 taken 0 (throw)
+      550:   65-block  1
+call    3 returned 550
+branch  4 taken 550 (fallthrough)
+branch  5 taken 0 (throw)
+      550:   65-block  2
+call    6 returned 550
+    %%%%%:   65-block  3
+call    7 never executed
+    %%%%%:   65-block  4
+      550:   66:            circle_lines.setOrigin(circle_lines.getRadius(), circle_lines.getRadius());
+      550:   66-block  0
+call    0 returned 550
+branch  1 taken 550 (fallthrough)
+branch  2 taken 0 (throw)
+      550:   66-block  1
+call    3 returned 550
+branch  4 taken 550 (fallthrough)
+branch  5 taken 0 (throw)
+      550:   66-block  2
+call    6 returned 550
+branch  7 taken 550 (fallthrough)
+branch  8 taken 0 (throw)
+      550:   67:            circle_lines.setPosition((float)WIDTH/2, (float)HEIGHT/2);
+      550:   67-block  0
+call    0 returned 550
+branch  1 taken 550 (fallthrough)
+branch  2 taken 0 (throw)
+      550:   68:            circle_lines.setOutlineColor(LINE_COLOR);
+      550:   68-block  0
+call    0 returned 550
+branch  1 taken 550 (fallthrough)
+branch  2 taken 0 (throw)
+      550:   69:            circle_lines.setOutlineThickness(CIRCLE_LINES_NOT_THICC);
+      550:   69-block  0
+call    0 returned 550
+branch  1 taken 550 (fallthrough)
+branch  2 taken 0 (throw)
+      550:   70:            target.draw(circle_lines, states);
+      550:   70-block  0
+call    0 returned 550
+branch  1 taken 550 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   71:        }
+        -:   72:        // Generate radar circle "line spacers"
+     1000:   73:        for (int i = 0; i <= CIRCLE_DEGREE; i += DELTA){
+       50:   73-block  0
+     1000:   73-block  1
+branch  0 taken 950 (fallthrough)
+branch  1 taken 50
+      950:   73-block  2
+      950:   74:            line[0] = sf::Vector2f((float)WIDTH/2, (float)HEIGHT/2);
+      950:   74-block  0
+call    0 returned 950
+call    1 returned 950
+branch  2 taken 950 (fallthrough)
+branch  3 taken 0 (throw)
+      950:   74-block  1
+call    4 returned 950
+branch  5 taken 950 (fallthrough)
+branch  6 taken 0 (throw)
+    %%%%%:   74-block  2
+    %%%%%:   74-block  3
+      950:   75:            line[0].color = sf::Color::Black;
+      950:   75-block  0
+call    0 returned 950
+branch  1 taken 950 (fallthrough)
+branch  2 taken 0 (throw)
+      950:   76:            line[1] = sf::Vector2f(ORIGIN_X + shape.getRadius()*cos(i*M_PI/((float)CIRCLE_DEGREE/2)), ORIGIN_Y + shape.getRadius()*sin(i*M_PI/((float)CIRCLE_DEGREE/2)));
+      950:   76-block  0
+call    0 returned 950
+branch  1 taken 950 (fallthrough)
+branch  2 taken 0 (throw)
+      950:   76-block  1
+call    3 returned 950
+branch  4 taken 950 (fallthrough)
+branch  5 taken 0 (throw)
+      950:   76-block  2
+call    6 returned 950
+call    7 returned 950
+branch  8 taken 950 (fallthrough)
+branch  9 taken 0 (throw)
+      950:   76-block  3
+call   10 returned 950
+branch 11 taken 950 (fallthrough)
+branch 12 taken 0 (throw)
+    %%%%%:   76-block  4
+    %%%%%:   76-block  5
+    %%%%%:   76-block  6
+      950:   77:            line[1].color = sf::Color::Black;
+      950:   77-block  0
+call    0 returned 950
+branch  1 taken 950 (fallthrough)
+branch  2 taken 0 (throw)
+      950:   78:            target.draw(line, states);
+      950:   78-block  0
+call    0 returned 950
+branch  1 taken 950 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   79:        }
+        -:   80:        // Generate radar directional scanner line
+      100:   81:        sf::RectangleShape radar_line(sf::Vector2f(shape.getRadius(), RADAR_THICC));
+       50:   81-block  0
+call    0 returned 50
+branch  1 taken 50 (fallthrough)
+branch  2 taken 0 (throw)
+       50:   81-block  1
+call    3 returned 50
+call    4 returned 50
+branch  5 taken 50 (fallthrough)
+branch  6 taken 0 (throw)
+call    7 returned 50
+    %%%%%:   81-block  2
+    %%%%%:   81-block  3
+call    8 never executed
+       50:   82:        radar_line.setFillColor(RADAR_COLOR);
+       50:   82-block  0
+call    0 returned 50
+branch  1 taken 50 (fallthrough)
+branch  2 taken 0 (throw)
+       50:   83:        radar_line.setPosition(shape.getPosition());
+       50:   83-block  0
+call    0 returned 50
+branch  1 taken 50 (fallthrough)
+branch  2 taken 0 (throw)
+       50:   83-block  1
+call    3 returned 50
+branch  4 taken 50 (fallthrough)
+branch  5 taken 0 (throw)
+        -:   84:        /*
+        -:   85:        float length_x = (position.x - (float)WIDTH/2);
+        -:   86:        float length_y = ((HEIGHT/2)-position.y);
+        -:   87:        printf("%f  %f\n", length_x, length_y);
+        -:   88:        float angle = atan(length_x/length_y);
+        -:   89:        if ((length_y < 0) && (length_x < 0)){
+        -:   90:            angle += 2*M_PI;
+        -:   91:        }
+        -:   92:        else if (length_x < 0){
+        -:   93:            angle += 2*M_PI;
+        -:   94:        }
+        -:   95:        */
+        -:   96:        //Display radar line.
+       50:   97:        float initial_degrees = degrees;
+       50:   98:        float fade = TRANSPARENT;
+       50:   99:        float delta = TRANSPARENT/FADING_COUNT;
+     2550:  100:        for (int i = 0; i < FADING_COUNT; i ++){
+       50:  100-block  0
+     2550:  100-block  1
+branch  0 taken 2500 (fallthrough)
+branch  1 taken 50
+     2500:  100-block  2
+     2500:  101:            radar_line.setFillColor(sf::Color(141, 27, 31, (int)fade));
+     2500:  101-block  0
+call    0 returned 2500
+branch  1 taken 2500 (fallthrough)
+branch  2 taken 0 (throw)
+     2500:  101-block  1
+call    3 returned 2500
+branch  4 taken 2500 (fallthrough)
+branch  5 taken 0 (throw)
+    %%%%%:  101-block  2
+     2500:  102:            radar_line.setRotation(initial_degrees + (float)i*DELTA_ANGLE);
+     2500:  102-block  0
+call    0 returned 2500
+branch  1 taken 2500 (fallthrough)
+branch  2 taken 0 (throw)
+     2500:  103:            target.draw(radar_line, states);
+     2500:  103-block  0
+call    0 returned 2500
+branch  1 taken 2500 (fallthrough)
+branch  2 taken 0 (throw)
+     2500:  104:            fade -= delta;
+        -:  105:        }
+        -:  106:        /*
+        -:  107:        if (rectangles->size() == FADING_COUNT){
+        -:  108:            rectangles->erase(rectangles->begin());
+        -:  109:        }
+        -:  110:        rectangles->push_back(radar_line); //
+        -:  111:        int fading = TRANSPARENT/FADING_COUNT;
+        -:  112:        int current_fade = TRANSPARENT;
+        -:  113:        for (int i = (int)rectangles->size()-1; i >= 0; i--){
+        -:  114:            (rectangles->begin()+i)->setFillColor(sf::Color(141, 27, 31, current_fade));
+        -:  115:            target.draw(*(rectangles->begin()+i), states);
+        -:  116:            current_fade -= fading;
+        -:  117:        }
+        -:  118:        */
+      100:  119:        sf::CircleShape circle;
+       50:  119-block  0
+call    0 returned 50
+branch  1 taken 50 (fallthrough)
+branch  2 taken 0 (throw)
+       50:  119-block  1
+call    3 returned 50
+    %%%%%:  119-block  2
+call    4 never executed
+       50:  120:        circle.setRadius(PLANE_RADIUS);
+       50:  120-block  0
+call    0 returned 50
+branch  1 taken 50 (fallthrough)
+branch  2 taken 0 (throw)
+       50:  121:        circle.setFillColor(PLANE_COLOR);
+       50:  121-block  0
+call    0 returned 50
+branch  1 taken 50 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  122:
+      422:  123:        for (int i = 0; i < planes->size(); i++){
+       50:  123-block  0
+      422:  123-block  1
+call    0 returned 422
+branch  1 taken 422 (fallthrough)
+branch  2 taken 0 (throw)
+      422:  123-block  2
+branch  3 taken 372 (fallthrough)
+branch  4 taken 50
+      372:  123-block  3
+      372:  124:            Position position = planes->get_aircraft_position_by_index(i);
+      372:  124-block  0
+call    0 returned 372
+branch  1 taken 372 (fallthrough)
+branch  2 taken 0 (throw)
+     1344:  125:            for (auto const &it : to_close_index){
+      372:  125-block  0
+call    0 returned 372
+call    1 returned 372
+     1344:  125-block  1
+call    2 returned 1344
+branch  3 taken 972 (fallthrough)
+branch  4 taken 372
+      972:  125-block  2
+call    5 returned 972
+call    6 returned 972
+      972:  126:                float r = shape.getRadius();
+call    0 returned 972
+branch  1 taken 972 (fallthrough)
+branch  2 taken 0 (throw)
+     1944:  127:                sf::VertexArray line_2(sf::LineStrip, 2);
+      972:  127-block  0
+call    0 returned 972
+branch  1 taken 972 (fallthrough)
+branch  2 taken 0 (throw)
+      972:  127-block  1
+call    3 returned 972
+    %%%%%:  127-block  2
+call    4 never executed
+    %%%%%:  127-block  3
+    %%%%%:  127-block  4
+    %%%%%:  127-block  5
+      972:  128:                int index = 0;
+      972:  129:                bool draw = false;
+     2916:  130:                for (auto const &it_2 : it){
+      972:  130-block  0
+call    0 returned 972
+call    1 returned 972
+     2916:  130-block  1
+call    2 returned 2916
+branch  3 taken 1944 (fallthrough)
+branch  4 taken 972
+     1944:  130-block  2
+call    5 returned 1944
+     1944:  130-block  3
+call    6 returned 1944
+     1944:  131:                    if ((position.x == it_2.x) && (position.y == it_2.y)){
+branch  0 taken 196 (fallthrough)
+branch  1 taken 1748
+      196:  131-block  0
+branch  2 taken 196 (fallthrough)
+branch  3 taken 0
+      196:  132:                        line_2[index] = sf::Vector2f((float)ORIGIN_X + (float)it_2.x*r/RADIUS,(float)ORIGIN_Y + (float)it_2.y*r/RADIUS);
+      196:  132-block  0
+call    0 returned 196
+call    1 returned 196
+branch  2 taken 196 (fallthrough)
+branch  3 taken 0 (throw)
+      196:  132-block  1
+call    4 returned 196
+branch  5 taken 196 (fallthrough)
+branch  6 taken 0 (throw)
+    %%%%%:  132-block  2
+    %%%%%:  132-block  3
+      196:  133:                        line_2[index].color = PLANE_DANGER_COLOR;
+      196:  133-block  0
+call    0 returned 196
+branch  1 taken 196 (fallthrough)
+branch  2 taken 0 (throw)
+      196:  134:                        circle.setFillColor(PLANE_DANGER_COLOR);
+      196:  134-block  0
+call    0 returned 196
+branch  1 taken 196 (fallthrough)
+branch  2 taken 0 (throw)
+      196:  135:                        draw = true;
+      196:  135-block  0
+        -:  136:                    }
+        -:  137:                    else{
+     1748:  138:                        line_2[index] = sf::Vector2f((float)ORIGIN_X + (float)it_2.x*r/RADIUS,(float)ORIGIN_Y + (float)it_2.y*r/RADIUS);
+     1748:  138-block  0
+call    0 returned 1748
+call    1 returned 1748
+branch  2 taken 1748 (fallthrough)
+branch  3 taken 0 (throw)
+     1748:  138-block  1
+call    4 returned 1748
+branch  5 taken 1748 (fallthrough)
+branch  6 taken 0 (throw)
+    %%%%%:  138-block  2
+    %%%%%:  138-block  3
+    %%%%%:  138-block  4
+     1748:  139:                        line_2[index].color = PLANE_DANGER_COLOR;
+     1748:  139-block  0
+call    0 returned 1748
+branch  1 taken 1748 (fallthrough)
+branch  2 taken 0 (throw)
+     1748:  139-block  1
+        -:  140:                    }
+     1944:  141:                    index++;
+        -:  142:                }
+      972:  143:                if (draw)
+      972:  143-block  0
+branch  0 taken 196 (fallthrough)
+branch  1 taken 776
+      196:  144:                    target.draw(line_2, states);
+      196:  144-block  0
+call    0 returned 196
+branch  1 taken 196 (fallthrough)
+branch  2 taken 0 (throw)
+      196:  144-block  1
+        -:  145:            }
+      372:  146:            circle.setPosition((float)ORIGIN_X + (float)position.x*shape.getRadius()/RADIUS - PLANE_RADIUS,
+      372:  146-block  0
+call    0 returned 372
+branch  1 taken 372 (fallthrough)
+branch  2 taken 0 (throw)
+      372:  146-block  1
+call    3 returned 372
+branch  4 taken 372 (fallthrough)
+branch  5 taken 0 (throw)
+      372:  147:                               (float)ORIGIN_Y + (float)position.y*shape.getRadius()/RADIUS - PLANE_RADIUS);
+      372:  147-block  0
+call    0 returned 372
+branch  1 taken 372 (fallthrough)
+branch  2 taken 0 (throw)
+      372:  148:            target.draw(circle, states);
+      372:  148-block  0
+call    0 returned 372
+branch  1 taken 372 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  149:
+      372:  150:            circle.setFillColor(PLANE_COLOR);
+      372:  150-block  0
+call    0 returned 372
+branch  1 taken 372 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  151:        }
+       50:  152:    }
+function _ZN4game15Game_background12update_radarEv called 50 returned 100% blocks executed 100%
+       50:  153:    void Game_background::update_radar() {
+       50:  153-block  0
+       50:  154:        degrees -= DELTA_DEGREES;
+       50:  155:        if (degrees < 0.0) degrees += CIRCLE_DEGREE;
+       50:  155-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 49
+        1:  155-block  1
+       50:  156:    }
+function _ZN4game15Game_background16update_aircraftsEP5Queue called 51 returned 100% blocks executed 90%
+       51:  157:    void Game_background::update_aircrafts(Queue *aircraft){
+       51:  157-block  0
+       51:  158:        to_close_index.clear();
+       51:  158-block  0
+call    0 returned 51
+       51:  159:        planes = aircraft;
+      460:  160:        for (int plane = 0; plane < aircraft->size(); plane++){
+      460:  160-block  0
+call    0 returned 460
+branch  1 taken 409 (fallthrough)
+branch  2 taken 51
+      409:  160-block  1
+     4138:  161:            for (int other_plane = 0;other_plane < aircraft->size(); other_plane++){
+      409:  161-block  0
+     4138:  161-block  1
+call    0 returned 4138
+branch  1 taken 3729 (fallthrough)
+branch  2 taken 409
+     3729:  161-block  2
+     3729:  162:                if (other_plane != plane){
+     3729:  162-block  0
+branch  0 taken 3320 (fallthrough)
+branch  1 taken 409
+     3320:  163:                    Position position_1 = aircraft->get_aircraft_position_by_index(other_plane);
+     3320:  163-block  0
+call    0 returned 3320
+branch  1 taken 3320 (fallthrough)
+branch  2 taken 0 (throw)
+     3320:  164:                    Position position_2 =  aircraft->get_aircraft_position_by_index(plane);
+     3320:  164-block  0
+call    0 returned 3320
+branch  1 taken 3320 (fallthrough)
+branch  2 taken 0 (throw)
+     3320:  165:                    if ((abs(position_1.x - position_2.x) <= DANGER_DISTANCE*shape.getRadius()/RADIUS) && (abs(position_1.y-position_2.y) <= DANGER_DISTANCE*shape.getRadius()/RADIUS)){
+     3320:  165-block  0
+call    0 returned 3320
+branch  1 taken 3320 (fallthrough)
+branch  2 taken 0 (throw)
+     3320:  165-block  1
+branch  3 taken 920 (fallthrough)
+branch  4 taken 2400
+      920:  165-block  2
+call    5 returned 920
+branch  6 taken 920 (fallthrough)
+branch  7 taken 0 (throw)
+      920:  165-block  3
+branch  8 taken 112 (fallthrough)
+branch  9 taken 808
+      112:  165-block  4
+     3208:  165-block  5
+     3320:  165-block  6
+branch 10 taken 112 (fallthrough)
+branch 11 taken 3208
+     3432:  166:                        std::list<Position> temp;
+      112:  166-block  0
+call    0 returned 112
+      112:  166-block  1
+call    1 returned 112
+     3320:  166-block  2
+    %%%%%:  166-block  3
+call    2 never executed
+    %%%%%:  166-block  4
+      112:  167:                        temp.push_back(position_1);
+call    0 returned 112
+branch  1 taken 112 (fallthrough)
+branch  2 taken 0 (throw)
+      112:  168:                        temp.push_back(position_2);
+      112:  168-block  0
+call    0 returned 112
+branch  1 taken 112 (fallthrough)
+branch  2 taken 0 (throw)
+      112:  169:                        to_close_index.push_back(temp);
+      112:  169-block  0
+call    0 returned 112
+branch  1 taken 112 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  170:                    }
+        -:  171:                }
+        -:  172:            }
+        -:  173:        }
+       51:  174:    }
+       51:  174-block  0
+function _GLOBAL__sub_I__ZN4game15Game_backgroundC2EN2sf5ColorEP5Queue called 1 returned 100% blocks executed 100%
+function _Z41__static_initialization_and_destruction_0ii called 1 returned 100% blocks executed 100%
+        4:  175:}
+        1:  175-block  0
+        1:  175-block  1
+call    0 returned 1
+        1:  175-block  2
+        1:  175-block  3
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:  175-block  4
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0
+        -:  176:
+        -:  177:
+        -:  178:
+        -:  179:
+        -:  180:
+        -:  181:
+        -:  182:/*
+        -:  183:float length_x = (position.x - (float)WIDTH/2);
+        -:  184:float length_y = ((HEIGHT/2)-position.y);
+        -:  185:printf("%f  %f\n", length_x, length_y);
+        -:  186:float angle = atan(length_x/length_y);
+        -:  187:if ((length_y < 0) && (length_x < 0)){
+        -:  188:    angle += 2*M_PI;
+        -:  189:}
+        -:  190:else if (length_x < 0){
+        -:  191:    angle += 2*M_PI;
+        -:  192:}
+        -:  193:*/
+        -:  194:
+        -:  195:/*      radar_line.rotate(degrees);
+        -:  196:      if (rectangles->size() == FADING_COUNT){
+        -:  197:          //rectangles->erase(rectangles->begin());
+        -:  198:      }
+        -:  199:      rectangles->push_back(radar_line); //
+        -:  200:      int fading = TRANSPARENT/FADING_COUNT;
+        -:  201:      int current_fade = TRANSPARENT;
+        -:  202:      for (int i = (int)rectangles->size()-1; i >= 0; i--){
+        -:  203:          (rectangles->begin()+i)->setFillColor(sf::Color(141, 27, 31, current_fade));
+        -:  204:          target.draw(*(rectangles->begin()+i), states);
+        -:  205:          current_fade -= fading;
+        -:  206:      }
+        -:  207:      */

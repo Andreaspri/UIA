@@ -1,0 +1,365 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+.mb-3{
+  margin-bottom: 0%;
+}
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+.border-top, .border-bottom  {
+  background: #23272b;
+}
+
+  /* Provide sufficient contrast against white background */
+a {
+  color: mediumpurple;
+}
+
+a:hover, a:active {
+  color: rebeccapurple;
+}
+
+
+.nav-pills .nav-link.active, 
+.nav-pills .show>.nav-link {
+  color:#fff;
+  background-color:rebeccapurple;
+}
+
+.btn-primary, 
+.btn-primary:focus, 
+.btn-primary:active {
+  color: #fff;
+  background-color: rebeccapurple;
+  border-color: mediumpurple;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: mediumpurple;
+  border-color: rebeccapurple;
+}
+
+.btn {
+  font-weight: 700;
+  height: 36px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+input {
+  color: #fff;
+  background-color: rebeccapurple;
+  border-color: mediumpurple;
+}
+
+input:hover {
+  color: #fff;
+  background-color: mediumpurple;
+  border-color: rebeccapurple;
+}
+
+
+.nav-pills .nav-link.active, 
+.nav-pills .show > .nav-link {
+  color: #fff;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 0;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+/* Left Navbar / Sidebar items*/
+/* Remove border on sidebar table. Force bootstrap override */
+.noBorder {
+  border:1px #0b2e13 !important;
+  border-collapse: collapse !important;
+}
+
+/* Hovertext for sidebar */
+.hovertext {
+  position: relative;
+}
+
+.hovertext:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  background-color: rebeccapurple;
+  border: 1px solid mediumpurple;
+  color: #e5e5e5;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 5px;
+  transition: opacity 0.25s ease-in-out;
+
+  position: absolute;
+  z-index: 1;
+  left: 100%;
+  top: -5px;
+}
+
+.hovertext:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* Hovertext for groups and contacts */
+.hovertext-left {
+  position: relative;
+}
+
+.hovertext-left:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  background-color: rebeccapurple;
+  border: 1px solid mediumpurple;
+  color: #e5e5e5;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 5px;
+  transition: opacity 0.25s ease-in-out;
+
+  position: absolute;
+  z-index: 1;
+  right: 100%;
+  top: -5px;
+}
+
+.hovertext-left:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Add contact icon for groups */
+.add-contact-group-icon {
+  position: absolute;
+  left: 16px;
+  bottom: 100%;
+  z-index: 2;
+  text-align: center;
+  padding: 2px 4px;
+  border: #fff solid 1px;
+}
+
+/* cheesy hr override */
+hr {
+  background-color: mediumpurple;
+}
+
+/* Hidden text section for padding whole lines at a time */
+.hidden-text {
+  visibility: hidden;
+  padding-bottom: 10px;
+}
+
+/* Nav group overrides */
+
+.uni-nav-group-list,
+.uni-nav-create-group,
+.uni-nav-contacts{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #F05454;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 1em;
+  text-align: center;
+}
+.pb-3{
+  color:#FFFFFF;
+}
+
+#wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+/* Register Page */
+div.form {
+  display: block;
+  text-align: center;
+}
+
+div.form {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: border-box;
+  border-style: solid;
+  border-color: #1b1e21;
+  border-radius: 25px;
+  background: #23272b;
+  padding: 20px;
+  color: #e5e5e5;
+}
+/* End Register Page */
+
+/* Used to specify length of field where needed */
+.fieldLength{
+  width:400px;
+}
+
+/* Changing cursor to pointer when selecting something */
+.changeCursor{
+  cursor: pointer;
+}
+.changeCursor:hover{
+  color: rebeccapurple;
+}
+
+/* Used to combat self-attracting rows */
+.customPadding{
+  padding-top: 75px;
+}
+
+/*  */
+
+.customDisplay{
+  vertical-align: middle;
+}
+
+/*
+ * Card component
+ */
+.card {
+  /* just in case there no content*/
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  /* shadows and rounded borders */
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  background: #343a40;
+  border: 0;
+  margin-bottom: 1rem;
+}
+
+/*  Calendar */
+
+
+.calendar-event-successfully-created{
+  background-color: #1e7e34;
+  background-blend-mode: lighten;
+  border: #1e7e34;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.calendar-event-not-successfully-created{
+  background-color: #a71d2a;
+  background-blend-mode: lighten;
+  border: #a71d2a;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+ /* End Calendar */
+
+
+.event-bad-input-box
+{
+  background-color: #a71d2a;
+  background-blend-mode: lighten;
+  border: #a71d2a;
+  border-radius: 5px;
+  visibility: hidden
+}

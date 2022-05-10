@@ -1,0 +1,16 @@
+﻿@model IEnumerable<UNIMEET.Data.ApplicationUser>
+
+<dl class="row">
+    <dt class="col-sm-4">
+        @foreach (var friend in Model)
+        {
+            @if (friend.Contacts.Contains(ViewData["CurrentApplicationUser"]))
+            {
+                <div class="row col-sm-12 changeCursor">
+                    <a onclick="selectFriends('@friend.Nickname', '@friend.Id')">@friend.Nickname</a>
+                </div>
+            }
+        }
+    </dt>
+</dl>
+

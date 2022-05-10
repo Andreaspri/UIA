@@ -1,0 +1,44 @@
+﻿
+
+.special-border{
+    font-family: "Times New Roman", serif;
+    color: #1b6ec2;
+}
+
+
+.entry-box{
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #818182;
+    background-color: #b3b7bb;
+}
+
+
+.add{
+    float-displace: ;
+}
+
+
+#Name{
+    
+}
+
+#Title{
+
+}
+
+#Message{
+    width: 40%;
+    height: 50%;
+}
+
+
+#Submit{
+    
+}
+
+#Add{
+    border-color: #1b6ec2;
+    
+}

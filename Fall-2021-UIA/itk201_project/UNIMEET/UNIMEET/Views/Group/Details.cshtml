@@ -1,0 +1,67 @@
+@model UNIMEET.Models.Group
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-11 col-md-11 col-lg-11">
+                @* This needs to be the main view *@
+                <div class="noBorder">
+                    <h2>@Model.Name</h2> 
+                    <a class="btn btn-primary changeCursor" asp-controller="Group" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                    <a class="btn btn-danger changeCursor" onclick="LeaveGroup()">Leave</a>
+                </div>
+                <div id="event-showcase"></div>
+                <div id="timeSlotsCalendar" > </div>
+                <div class="calendar-event-placement-container">
+                    <div id="calendarEventSuccessfullyCreated"></div>
+                </div>
+                
+
+                <input id="submitCalenderEvent" type="hidden" value="Submit" onclick="submitCalenderEvent()"/>
+                <div id="add-user-to-group-view">
+                    <div style="visibility: hidden" id="group-member-search-div">
+                        Search for a contact to add as group member:
+                        <input id="group-member-search-string" type="search" onkeyup="searchNewGroupMembers()"/>
+                    </div>
+                    <div id="new-group-members"></div>
+                    <br/>
+                    <button class="btn btn-primary" id="add-contact-to-group" onclick="AddContactsToGroup()" style="visibility: hidden">Add</button>
+
+                    <div id="group-id" type="hidden" value="@Model.Id"></div>
+
+                    <div style="visibility: hidden">
+                        <ul id="selected-id">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 col-md-1 col-lg-1">
+                @* This needs to be to the right *@
+                <table class="table noBorder">
+                    <tbody>
+                    <div id="group-members"></div>
+                    
+                    <div id="add-member-to-group">
+                        <tr class="noBorder">
+                            <td class="noBorder">
+                            <span class="hovertext-left" data-hover="Toggle add group member">
+                                <img class="rounded-circle changeCursor" onclick="displayContactSearch()" alt="Toggle add group member" src="~/assets/img/add-filled-svgrepo-com.svg" width="50" height="50">
+                            </span>
+                            </td>
+                        </tr>
+                    </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/event.js"></script>
+<script src="~/js/groupMembers.js"></script>

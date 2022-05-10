@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/graphics.h
+
+../include/patterns.h
+
+C:/Users/Andreas/ikt203_projects/projects/project 1 - game of life/main.cpp
+cstdio
+-
+cstdlib
+-
+cstring
+-
+patterns.h
+-
+graphics.h
+-
+

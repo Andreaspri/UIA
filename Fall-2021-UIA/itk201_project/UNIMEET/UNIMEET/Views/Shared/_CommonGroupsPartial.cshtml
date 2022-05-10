@@ -1,0 +1,19 @@
+﻿@using System.Text.RegularExpressions
+@model IEnumerable<UNIMEET.Models.Group>
+
+
+@foreach (var group in Model)
+{
+    Regex rgx = new Regex("[^a-zA-Z0-9-]");
+    var safeName = rgx.Replace(@group.Name, "");
+    var imagePath= @"https://avatars.dicebear.com/api/gridy/" + @safeName + ".svg";
+    <tr class="noBorder">
+        <td class="noBorder">
+            <a class="nav-link text-dark uni-nav-group-list" asp-controller="Group" asp-action="Details" asp-route-id="@group.Id">
+                <span class="hovertext" data-hover="@group.Name">
+                    <img class="rounded-circle" alt="@group.Name" src="@imagePath" width="50" height="50">
+                </span>
+            </a>
+        </td>
+    </tr>
+}

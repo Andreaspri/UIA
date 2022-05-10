@@ -1,0 +1,7 @@
+{
+  "name": "UNIMEET",
+  "version": "1.0.0",
+  "dependencies": {
+    "node.js": "^0.0.1-security"
+  }
+}

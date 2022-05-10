@@ -1,0 +1,3 @@
+C:/Users/Andreas/ikt203/worksheets/worksheet_7/cmake-build-debug/CMakeFiles/worksheet_7.dir
+C:/Users/Andreas/ikt203/worksheets/worksheet_7/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Andreas/ikt203/worksheets/worksheet_7/cmake-build-debug/CMakeFiles/rebuild_cache.dir

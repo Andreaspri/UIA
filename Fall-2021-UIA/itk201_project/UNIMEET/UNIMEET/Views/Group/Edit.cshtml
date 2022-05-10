@@ -1,0 +1,71 @@
+@using System.Text.RegularExpressions
+@model UNIMEET.Models.Group
+
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div id="group-id" type="hidden" value="@Model.Id"></div>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-11 col-md-11 col-lg-11">
+                @* This needs to be the main view *@
+                <div class="row justify-content-center">
+                    <div class="noBorder">
+                        <h2>@Model.Name</h2>
+                    </div>
+                </div>
+                <br />
+                <div class="col-md">
+                    <div class="row">
+                        @* Displays the group icon *@ 
+                        @{
+                            Regex rgx = new Regex("[^a-zA-Z0-9-]");
+                            var name = rgx.Replace(@Model.Name, "");
+                            var imagePath = @"https://avatars.dicebear.com/api/gridy/" + name + ".svg";
+                            <tr class="noBorder">
+                                <td class="noBorder">
+                                    <a class="nav-link text-dark uni-nav-group-list" asp-controller="Group" asp-action="Details" asp-route-id="@Model.Id">
+                                        @* TODO: Add hover function for @item.name *@
+                                        <span class="hovertext" data-hover="@Model.Name">
+                                            <img class="rounded-circle" alt="@Model.Name" src="@imagePath" width="100" height="100">
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </div>
+                    <br/>
+                    <div class="row customPadding">
+                        <div class="col-md-4">
+                            <form asp-action="Edit">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="Id"/>
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label float-left">Change group name</label>
+                                    <input asp-for="Name" class="form-control"/>
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Save changes" class="btn btn-primary"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 col-md-1 col-lg-1">
+                @* This needs to be to the right *@
+                <table class="table noBorder">
+                    <tbody>
+                    <div id="group-members"></div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/groupMembers.js"></script>

@@ -1,0 +1,15 @@
+﻿@model UNIMEET.Data.ApplicationUser
+
+
+@foreach (var contact in Model.ContactRequestSender)
+{
+    <tr>
+        <td>
+            <a class="link-danger" asp-controller="ApplicationUser" asp-action="Details" asp-route-id="@contact.Id">@contact.Nickname</a>
+            <form asp-controller="ApplicationUser" asp-action="AcceptContactRequest">
+                <input asp-for="Id" type="hidden" value="@contact.Id"/>
+                <input type="submit" value="Accept"/>
+            </form>
+        </td>
+    </tr>
+}

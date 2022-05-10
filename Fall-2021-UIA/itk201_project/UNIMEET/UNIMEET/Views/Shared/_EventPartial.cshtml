@@ -1,0 +1,83 @@
+﻿@using Newtonsoft.Json
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model UNIMEET.Models.Event
+
+<form class="eventForm" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="DateFrom" class="control-label"></label>
+                    <input asp-for="DateFrom" class="form-control" value="@DateTime.Now.Date.ToString("yyyy-MM-dd")"/>
+                    <div id="DateFromError" class="event-bad-input-box" ></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="OnlyAfter" class="control-label"></label>
+                    <input asp-for="OnlyAfter" class="form-control" value="@ViewBag.OnlyAfter.TimeOfDay" />
+                    <div id="OnlyAfterError" class="event-bad-input-box" ></div>
+                </div>  
+            </div>
+            
+            <div class="col">
+                <div class="form-group">
+                    <label for="Hour">Hour</label>
+                    <input type="number" id="Hour" name="Hour" class="form-control" value="0"/>
+                    <label id="Hour-error" class="event-bad-input-box" for="Hour" ></label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="Min">Minutes</label>
+                    <input type="number" id="Min" name="Min" class="form-control" value="@ViewBag.DefaultDuration.Minute"/>
+                    <label id="Min-error" class="event-bad-input-box" for="Min" ></label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="DateTo" class="control-label"></label>
+                    <input asp-for="DateTo" class="form-control" value="@DateTime.Now.Date.AddDays(7).ToString("yyyy-MM-dd")"/>
+                    <div id="DateToError" class="event-bad-input-box" ></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="OnlyBefore" class="control-label"></label>
+                    <input asp-for="OnlyBefore" class="form-control" value="@ViewBag.OnlyBefore.TimeOfDay" />
+                    <div id="OnlyBeforeError" class="event-bad-input-box" ></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <input type="hidden" asp-for="Duration" class="form-control" value="@ViewBag.DefaultDuration"/>
+                </div>
+            </div>
+            <div class="col">
+                <input type="hidden" asp-for="GroupId" value="@ViewBag.GroupId"/>
+                <div class="form-group">
+                    <div class="hidden-text">Not important, just for padding</div>
+                    <button type="button" onclick="timeHandler(this.form)" class="btn btn-primary">Get Timeslots</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

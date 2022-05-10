@@ -1,0 +1,127 @@
+        -:    0:Source:C:/dev/libs/SFML/include/SFML/System/Thread.inl
+        -:    0:Graph:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:////////////////////////////////////////////////////////////
+        -:    2://
+        -:    3:// SFML - Simple and Fast Multimedia Library
+        -:    4:// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
+        -:    5://
+        -:    6:// This software is provided 'as-is', without any express or implied warranty.
+        -:    7:// In no event will the authors be held liable for any damages arising from the use of this software.
+        -:    8://
+        -:    9:// Permission is granted to anyone to use this software for any purpose,
+        -:   10:// including commercial applications, and to alter it and redistribute it freely,
+        -:   11:// subject to the following restrictions:
+        -:   12://
+        -:   13:// 1. The origin of this software must not be misrepresented;
+        -:   14://    you must not claim that you wrote the original software.
+        -:   15://    If you use this software in a product, an acknowledgment
+        -:   16://    in the product documentation would be appreciated but is not required.
+        -:   17://
+        -:   18:// 2. Altered source versions must be plainly marked as such,
+        -:   19://    and must not be misrepresented as being the original software.
+        -:   20://
+        -:   21:// 3. This notice may not be removed or altered from any source distribution.
+        -:   22://
+        -:   23:////////////////////////////////////////////////////////////
+        -:   24:
+        -:   25:namespace priv
+        -:   26:{
+        -:   27:// Base class for abstract thread functions
+function _ZN2sf4priv10ThreadFuncC2Ev called 1 returned 100% blocks executed 100%
+        1:   28:struct ThreadFunc
+        1:   28-block  0
+        -:   29:{
+function _ZN2sf4priv10ThreadFuncD2Ev called 1 returned 100% blocks executed 100%
+        1:   30:    virtual ~ThreadFunc() {}
+        1:   30-block  0
+        -:   31:    virtual void run() = 0;
+        -:   32:};
+        -:   33:
+        -:   34:// Specialization using a functor (including free functions) with no argument
+        -:   35:template <typename T>
+        -:   36:struct ThreadFunctor : ThreadFunc
+        -:   37:{
+        -:   38:    ThreadFunctor(T functor) : m_functor(functor) {}
+        -:   39:    virtual void run() {m_functor();}
+        -:   40:    T m_functor;
+        -:   41:};
+        -:   42:
+        -:   43:// Specialization using a functor (including free functions) with one argument
+        -:   44:template <typename F, typename A>
+function _ZN2sf4priv20ThreadFunctorWithArgIPFvP8showcaseES3_ED0Ev called 1 returned 100% blocks executed 100%
+function _ZN2sf4priv20ThreadFunctorWithArgIPFvP8showcaseES3_ED1Ev called 1 returned 100% blocks executed 100%
+        4:   45:struct ThreadFunctorWithArg : ThreadFunc
+        1:   45-block  0
+        1:   45-block  1
+call    0 returned 1
+call    1 returned 1
+        1:   45-block  2
+        1:   45-block  3
+call    2 returned 1
+        -:   46:{
+function _ZN2sf4priv20ThreadFunctorWithArgIPFvP8showcaseES3_EC1ES5_S3_ called 1 returned 100% blocks executed 100%
+        2:   47:    ThreadFunctorWithArg(F function, A arg) : m_function(function), m_arg(arg) {}
+        1:   47-block  0
+        1:   47-block  1
+call    0 returned 1
+function _ZN2sf4priv20ThreadFunctorWithArgIPFvP8showcaseES3_E3runEv called 1 returned 100% blocks executed 100%
+        2:   48:    virtual void run() {m_function(m_arg);}
+        1:   48-block  0
+        1:   48-block  1
+call    0 returned 1
+        -:   49:    F m_function;
+        -:   50:    A m_arg;
+        -:   51:};
+        -:   52:
+        -:   53:// Specialization using a member function
+        -:   54:template <typename C>
+        -:   55:struct ThreadMemberFunc : ThreadFunc
+        -:   56:{
+        -:   57:    ThreadMemberFunc(void(C::*function)(), C* object) : m_function(function), m_object(object) {}
+        -:   58:    virtual void run() {(m_object->*m_function)();}
+        -:   59:    void(C::*m_function)();
+        -:   60:    C* m_object;
+        -:   61:};
+        -:   62:
+        -:   63:} // namespace priv
+        -:   64:
+        -:   65:
+        -:   66:////////////////////////////////////////////////////////////
+        -:   67:template <typename F>
+        -:   68:Thread::Thread(F functor) :
+        -:   69:m_impl      (NULL),
+        -:   70:m_entryPoint(new priv::ThreadFunctor<F>(functor))
+        -:   71:{
+        -:   72:}
+        -:   73:
+        -:   74:
+        -:   75:////////////////////////////////////////////////////////////
+        -:   76:template <typename F, typename A>
+function _ZN2sf6ThreadC1IPFvP8showcaseES3_EET_T0_ called 1 returned 100% blocks executed 83%
+        1:   77:Thread::Thread(F function, A argument) :
+        1:   77-block  0
+        -:   78:m_impl      (NULL),
+        1:   79:m_entryPoint(new priv::ThreadFunctorWithArg<F, A>(function, argument))
+        1:   79-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   79-block  1
+call    4 returned 1
+    %%%%%:   79-block  2
+call    5 never executed
+        -:   80:{
+        1:   81:}
+        -:   82:
+        -:   83:
+        -:   84:////////////////////////////////////////////////////////////
+        -:   85:template <typename C>
+        -:   86:Thread::Thread(void(C::*function)(), C* object) :
+        -:   87:m_impl      (NULL),
+        -:   88:m_entryPoint(new priv::ThreadMemberFunc<C>(function, object))
+        -:   89:{
+        -:   90:}

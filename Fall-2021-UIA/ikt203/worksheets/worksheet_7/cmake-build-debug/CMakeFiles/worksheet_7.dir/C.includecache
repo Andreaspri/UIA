@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Andreas/ikt203/worksheets/worksheet_7/queue.c
+stdlib.h
+-
+stdio.h
+-
+queue.h
+C:/Users/Andreas/ikt203/worksheets/worksheet_7/queue.h
+
+C:/Users/Andreas/ikt203/worksheets/worksheet_7/queue.h
+

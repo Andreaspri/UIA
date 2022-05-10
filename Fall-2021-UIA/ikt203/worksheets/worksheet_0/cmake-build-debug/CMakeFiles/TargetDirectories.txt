@@ -1,0 +1,3 @@
+C:/Users/Andreas/Documents/C_projects/worksheets/worksheet_0/cmake-build-debug/CMakeFiles/worksheet_0.dir
+C:/Users/Andreas/Documents/C_projects/worksheets/worksheet_0/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Andreas/Documents/C_projects/worksheets/worksheet_0/cmake-build-debug/CMakeFiles/rebuild_cache.dir

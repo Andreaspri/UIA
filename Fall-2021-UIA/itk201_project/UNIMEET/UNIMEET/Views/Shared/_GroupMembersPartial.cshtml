@@ -1,0 +1,28 @@
+﻿@using System.Text.RegularExpressions
+@model UNIMEET.Models.Group
+
+<div id="user-id" type="hidden"></div>
+
+@foreach (var user in Model.ApplicationUsers)
+{
+    Regex rgx = new Regex("[^a-zA-Z0-9-]");
+    var safeName = rgx.Replace(@user.Nickname, "");
+    var imagePath= @"https://avatars.dicebear.com/api/initials/" + @safeName + ".svg";
+    <tr class="noBorder">
+        <td class="noBorder">
+            <a class="nav-link text-dark" asp-controller="ApplicationUser" asp-action="Details" asp-route-id="@user.Id">
+                <span class="hovertext-left" data-hover="@user.Nickname">
+                    <img class="rounded-circle" alt="@user.Nickname" src="@imagePath" width="50" height="50">
+                </span>
+                <span class="hovertext-left" data-hover="Not in your contacts">
+                @{
+                    if (!user.Contacts.Contains(@ViewBag.CurrentUser) && user != ViewBag.CurrentUser)
+                    {
+                        <span class="add-contact-group-icon badge badge-pill badge-success">+</span>
+                    }
+                }
+            </span>
+            </a>
+        </td>
+    </tr>
+}

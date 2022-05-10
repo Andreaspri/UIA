@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Andreas/ikt203/worksheets/worksheet_11/extras/tree.c
+tree.h
+C:/Users/Andreas/ikt203/worksheets/worksheet_11/extras/tree.h
+stdio.h
+-
+stdlib.h
+-
+
+C:/Users/Andreas/ikt203/worksheets/worksheet_11/extras/tree.h
+

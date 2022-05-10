@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="project_6___expression_parsing_and_evaluation"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="project_6___expression_parsing_and_evaluation">
+				<Option output="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/project_6___expression_parsing_and_evaluation.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/laae"/>
+					<Add directory="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/myString"/>
+					<Add directory="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/parsetree"/>
+					<Add directory="C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++"/>
+					<Add directory="C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward"/>
+					<Add directory="C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include"/>
+					<Add directory="C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed"/>
+					<Add directory="C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 project_6___expression_parsing_and_evaluation"/>
+					<CompileFile command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="project_6___expression_parsing_and_evaluation/fast">
+				<Option output="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/project_6___expression_parsing_and_evaluation.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/laae"/>
+					<Add directory="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/myString"/>
+					<Add directory="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/parsetree"/>
+					<Add directory="C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++"/>
+					<Add directory="C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward"/>
+					<Add directory="C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include"/>
+					<Add directory="C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed"/>
+					<Add directory="C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 project_6___expression_parsing_and_evaluation/fast"/>
+					<CompileFile command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/laae/laae.cpp">
+			<Option target="project_6___expression_parsing_and_evaluation"/>
+		</Unit>
+		<Unit filename="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/laae/laae.h">
+			<Option target="project_6___expression_parsing_and_evaluation"/>
+		</Unit>
+		<Unit filename="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/main.cpp">
+			<Option target="project_6___expression_parsing_and_evaluation"/>
+		</Unit>
+		<Unit filename="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/myString/myString.cpp">
+			<Option target="project_6___expression_parsing_and_evaluation"/>
+		</Unit>
+		<Unit filename="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/myString/myString.h">
+			<Option target="project_6___expression_parsing_and_evaluation"/>
+		</Unit>
+		<Unit filename="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/parsetree/parsetree.cpp">
+			<Option target="project_6___expression_parsing_and_evaluation"/>
+		</Unit>
+		<Unit filename="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/parsetree/parsetree.h">
+			<Option target="project_6___expression_parsing_and_evaluation"/>
+		</Unit>
+		<Unit filename="C:/Users/Andreas/ikt203_projects/projects/project_6_-_expression_parsing_and_evaluation/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

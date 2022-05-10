@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - UNIMEET</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" id="main-layout" href="~/css/site.css"/>
+    
+    @* Merge one file at a time, and make sure the site works between each merge. *@
+    <link rel="stylesheet" href="~/css/login.css"/>
+    <link rel="stylesheet" href="~/css/user.css"/>
+    <link rel="stylesheet" href="~/css/fullCalendarCss/main.css"/>
+
+</head>
+<body>
+<header class="noBorder">
+    <!-- Top navbar -->
+    @* <div class="list-group list-group-horizontal"> *@
+    @*     $1$ Only show the top navbar if the user is logged in #1# *@
+    @*     @if (IsSectionDefined("topbar")) *@
+    @*     { *@
+    @*         @RenderSection("topbar", required: true) *@
+    @*     } *@
+    @* </div> *@
+    <nav class="color navbar navbar-expand-sm navbar-toggleable-sm bg-black border-bottom box-shadow ">
+        <div class="container">
+            <div class="logo">
+                <!-- Logo -->
+                <div id="logo-wrapper">
+                    <a class="navbar-brand ml-auto" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img alt="UNIMEET" src="~/assets/img/UNIMEET_logo.png" width="183" height="39">
+                    </a>
+                </div>
+            </div>
+            @* TODO: This button does not appear to work *@
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Help"> Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <partial name="_LoginPartial"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <p>
+        <partial name="_CookieConsentPartial"/>
+    </p>
+</div>
+<div class="row">
+    <div class="col-sm-1 col-md-1 col-lg-1">
+        <!-- Side navbar-->
+        <div id="main-sidebar"></div>
+    </div>
+    <div class="col-sm-11 col-md-11 col-lg-11">
+        <div class="d-flex" id="wrapper">
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Page content-->
+                <div class="container-fluid" style="padding-right: 0;margin-right: 0;">
+                    <main role="main" class="pb-3 text-center">
+                        @RenderBody()
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/groups.js"></script>
+<script src="~/js/contactSearch.js"></script>
+<script src="~/js/fullCalendar/main.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

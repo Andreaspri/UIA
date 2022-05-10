@@ -1,0 +1,362 @@
+        -:    0:Source:C:/Users/Andreas/ikt203_projects/projects/project 5 Air Traffic Controller/main.cpp
+        -:    0:Graph:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <iostream>
+        -:    2:#include <SFML/Graphics.hpp>
+        -:    3:#include "Graphics.h"
+        -:    4:#include "chrono"
+        -:    5:#include "thread"
+        -:    6:#include "queue.h"
+        -:    7:
+        -:    8:
+        -:    9:
+        -:   10:#define DELTA_TIME 0
+        -:   11:#define PLANE_RADIUS_1 1
+        -:   12:
+        -:   13:typedef struct showcase{
+        -:   14:    sf::RenderWindow *window;
+        -:   15:    game::Game_background *game_background;
+        -:   16:    Queue *queue;
+        -:   17:}Showcase;
+        -:   18:
+        -:   19:using namespace std::this_thread; // sleep_for, sleep_until
+        -:   20:using namespace std::chrono; // nanoseconds, system_clock, seconds
+        -:   21:
+        -:   22:void GameThread(Showcase *);
+        -:   23:
+        -:   24:
+        -:   25:
+function _Z11newAircraftv called 50 returned 100% blocks executed 83%
+       50:   26:Aircraft* newAircraft()
+       50:   26-block  0
+        -:   27:{
+       50:   28:    return new Aircraft;
+       50:   28-block  0
+call    0 returned 50
+call    1 returned 50
+branch  2 taken 50 (fallthrough)
+branch  3 taken 0 (throw)
+       50:   28-block  1
+       50:   28-block  2
+    %%%%%:   28-block  3
+call    4 never executed
+        -:   29:}
+        -:   30:
+        -:   31:
+        -:   32:
+function main called 1 returned 100% blocks executed 62%
+        1:   33:int main(){
+        1:   33-block  0
+        -:   34:
+        -:   35:
+        1:   36:    Queue queue;
+        1:   36-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   37:
+        -:   38:
+        -:   39:
+        -:   40:/*
+        -:   41:    // Create some seeding aircraft for testing
+        -:   42:    Aircraft aircraft1;
+        -:   43:    printf("%f, %f\n", aircraft1.get_position().x, aircraft1.get_position().y);
+        -:   44:    Aircraft aircraft2;
+        -:   45:    printf("%f, %f\n", aircraft2.get_position().x, aircraft2.get_position().y);
+        -:   46:    Aircraft aircraft3;
+        -:   47:    printf("%f, %f\n", aircraft3.get_position().x, aircraft3.get_position().y);
+        -:   48:    Aircraft aircraft4;
+        -:   49:    printf("%f, %f\n", aircraft4.get_position().x, aircraft4.get_position().y);
+        -:   50:    Aircraft aircraft5;
+        -:   51:    printf("%f, %f\n", aircraft5.get_position().x, aircraft5.get_position().y);
+        -:   52:    Aircraft aircraft6;
+        -:   53:    printf("%f, %f\n", aircraft6.get_position().x, aircraft6.get_position().y);
+        -:   54:    Aircraft aircraft7;
+        -:   55:    printf("%f, %f\n", aircraft7.get_position().x, aircraft7.get_position().y);
+        -:   56:
+        -:   57:    // Add those aircraft to the queue
+        -:   58:    queue.enQueue(&aircraft1);
+        -:   59:    queue.enQueue(&aircraft2);
+        -:   60:    queue.enQueue(&aircraft3);
+        -:   61:    queue.enQueue(&aircraft4);
+        -:   62:    queue.enQueue(&aircraft5);
+        -:   63:    queue.enQueue(&aircraft6);
+        -:   64:    queue.enQueue(&aircraft7);
+        -:   65:
+        -:   66:    */
+        -:   67:
+        -:   68:
+        -:   69:
+        -:   70:
+        -:   71:
+        -:   72:
+        2:   73:    sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Air Traffic Controller - Aircraft radar");
+        1:   73-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0 (throw)
+        1:   73-block  1
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:   73-block  2
+call    8 returned 1
+branch  9 taken 1 (fallthrough)
+branch 10 taken 0 (throw)
+        1:   73-block  3
+call   11 returned 1
+call   12 returned 1
+call   13 returned 1
+        1:   73-block  4
+    %%%%%:   73-block  5
+    %%%%%:   73-block  6
+    %%%%%:   73-block  7
+call   14 never executed
+    %%%%%:   73-block  8
+    %%%%%:   73-block  9
+call   15 never executed
+    %%%%%:   73-block 10
+    %%%%%:   73-block 11
+    %%%%%:   73-block 12
+    %%%%%:   73-block 13
+call   16 never executed
+        1:   74:    window.setKeyRepeatEnabled(false);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   75:    window.setActive(false);
+        1:   75-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   76:    window.setFramerateLimit(60);
+        1:   76-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   77:    sf::Image icon;
+        1:   77-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   77-block  1
+call    3 returned 1
+    %%%%%:   77-block  2
+call    4 never executed
+        1:   78:    if (!icon.loadFromFile("assets/Aircraft.png")){
+        1:   78-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   78-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   78-block  2
+call    7 returned 1
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   78-block  3
+call   11 never executed
+    %%%%%:   78-block  4
+    %%%%%:   78-block  5
+call   12 never executed
+    %%%%%:   78-block  6
+    %%%%%:   78-block  7
+    #####:   79:        return EXIT_FAILURE;
+    $$$$$:   79-block  0
+        -:   80:    }
+        1:   81:    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+        1:   81-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   81-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   81-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   81-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        -:   82:
+        -:   83:    // Initializing the background class
+        2:   84:    game::Game_background game_background(GREEN, &queue);
+        1:   84-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   84-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+call    6 returned 1
+    %%%%%:   84-block  2
+    %%%%%:   84-block  3
+call    7 never executed
+        -:   85:
+        -:   86:    // Setting up thread to render graphics
+        1:   87:    auto *my_showcase = (Showcase *)malloc(sizeof(Showcase));
+        1:   88:    my_showcase->game_background = &game_background;
+        1:   89:    my_showcase->window = &window;
+        1:   90:    my_showcase->queue = &queue;
+        -:   91:
+        2:   92:    sf::Thread myThread(&GameThread, my_showcase);
+        1:   92-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   92-block  1
+call    3 returned 1
+    %%%%%:   92-block  2
+call    4 never executed
+        -:   93:    sf::Event event;
+        -:   94:
+        1:   95:    myThread.launch();
+        1:   95-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   96:
+        2:   97:    while (window.isOpen()){
+        2:   97-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   97-block  1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 1
+        1:   97-block  2
+        -:   98:
+       51:   99:        while (window.waitEvent(event)){
+       51:   99-block  0
+call    0 returned 51
+branch  1 taken 51 (fallthrough)
+branch  2 taken 0 (throw)
+       51:   99-block  1
+branch  3 taken 50 (fallthrough)
+branch  4 taken 1
+       50:   99-block  2
+       50:  100:            if (event.type == sf::Event::Closed){
+       50:  100-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 49
+        1:  101:                window.close();
+        1:  101-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  101-block  1
+        -:  102:            }
+        -:  103:        }
+        -:  104:
+        1:  105:        game_background.update_aircrafts(&queue);
+        1:  105-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  106:        myThread.wait();
+        1:  106-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  107:    }
+        -:  108:
+        -:  109:
+        -:  110:
+        1:  111:    return 0;
+        -:  112:}
+        -:  113:
+        -:  114:// Drawing the background and changing the angle of the red searcher in a thread.
+function _Z10GameThreadP8showcase called 1 returned 100% blocks executed 89%
+        1:  115:void GameThread(Showcase *my_showcase) {
+        1:  115-block  0
+       51:  116:    while (my_showcase->window->isOpen()) {
+       51:  116-block  0
+call    0 returned 51
+branch  1 taken 50 (fallthrough)
+branch  2 taken 1
+       50:  116-block  1
+       50:  117:        my_showcase->window->clear();
+       50:  117-block  0
+call    0 returned 50
+call    1 returned 50
+branch  2 taken 50 (fallthrough)
+branch  3 taken 0 (throw)
+    %%%%%:  117-block  1
+call    4 never executed
+       50:  118:        my_showcase->window->draw(*my_showcase->game_background);
+       50:  118-block  0
+call    0 returned 50
+       50:  119:        my_showcase->window->display();
+call    0 returned 50
+       50:  120:        sleep_for(milliseconds(DELTA_TIME));
+call    0 returned 50
+call    1 returned 50
+branch  2 taken 50 (fallthrough)
+branch  3 taken 0 (throw)
+    %%%%%:  120-block  0
+       50:  121:        my_showcase->queue->enQueue(newAircraft());
+       50:  121-block  0
+call    0 returned 50
+call    1 returned 50
+       50:  122:        my_showcase->game_background->update_radar();
+call    0 returned 50
+       50:  123:        my_showcase->queue->apply_changes_to_aircrafts();
+call    0 returned 50
+       50:  124:        my_showcase->game_background->update_aircrafts(my_showcase->queue);
+call    0 returned 50
+       50:  125:        my_showcase->queue->sort();
+call    0 returned 50
+        -:  126:        while (true)
+        -:  127:        {
+       67:  128:            if (!my_showcase->queue->is_empty())
+       67:  128-block  0
+call    0 returned 67
+branch  1 taken 67 (fallthrough)
+branch  2 taken 0
+        -:  129:            {
+       67:  130:                if (my_showcase->queue->check_if_node_is_outside())
+       67:  130-block  0
+call    0 returned 67
+branch  1 taken 17 (fallthrough)
+branch  2 taken 50
+       17:  131:                    my_showcase->queue->deQueue();
+       17:  131-block  0
+call    0 returned 17
+        -:  132:                else
+       50:  133:                    break;
+       50:  133-block  0
+        -:  134:            }
+        -:  135:            else
+    #####:  136:                break;
+    $$$$$:  136-block  0
+        -:  137:        }
+        -:  138:
+        -:  139:
+        -:  140:
+        -:  141:    }
+function _GLOBAL__sub_I__Z11newAircraftv called 1 returned 100% blocks executed 100%
+function _Z41__static_initialization_and_destruction_0ii called 1 returned 100% blocks executed 100%
+        5:  142:}
+        1:  142-block  0
+        1:  142-block  1
+call    0 returned 1
+        1:  142-block  2
+        1:  142-block  3
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:  142-block  4
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0
+        1:  142-block  5

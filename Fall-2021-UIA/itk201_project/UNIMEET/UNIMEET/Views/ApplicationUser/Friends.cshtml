@@ -1,0 +1,74 @@
+﻿@using System.Text.RegularExpressions
+@model UNIMEET.Data.ApplicationUser
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-11 col-md-11 col-lg-11">
+            @* This needs to be the main view *@
+            <div class="row">
+                <div class="col-sm-5 col-md-5 col-lg-5">
+                    @* Incoming contact requests *@
+                    <a class="changeCursor" onclick="contactsIncomingPartial()">
+                        <img class="rounded-circle" alt="Incoming contact requests" src="~/assets/img/incoming-call-svgrepo-com.svg" width="25" height="25">
+                        Incoming contact requests
+                    </a>
+                </div>
+                <div class="col-sm-5 col-md-5 col-lg-5">
+                    @* Outgoing contact requests *@
+                    <a class="changeCursor" onclick="contactsOutgoingPartial()">
+                        <img class="rounded-circle" alt="Outgoing contact requests" src="~/assets/img/outgoing-call-svgrepo-com.svg" width="25" height="25">
+                        Outgoing contact requests
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div id="contacts-main-view">
+                        @* Dynamic div updated based on page content *@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1">
+            @* This needs to be to the right *@
+            <table class="table noBorder">
+                <tbody class="noBorder">
+                <tr class="noBorder">
+                    <td class="noBorder">
+                        <div class="text-light">
+                            Nickname
+                        </div>
+                    </td>
+                </tr>
+                @foreach (var contact in Model.Contacts)
+                {
+                    Regex rgx = new Regex("[^a-zA-Z0-9-]");
+                    var safeName = rgx.Replace(@contact.Nickname, "");
+                    var imagePath = @"https://avatars.dicebear.com/api/initials/" + @safeName + ".svg";
+                    <tr class="noBorder">
+                        <td class="noBorder">
+                            <a class="nav-link text-light" asp-controller="ApplicationUser" asp-action="Details" asp-route-id="@contact.Id">
+                                <span class="hovertext-left" data-hover="@contact.Nickname">
+                                    <img class="rounded-circle" alt="@contact.Nickname" src="@imagePath" width="50" height="50">
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+                <div id="add-member-to-group">
+                    <tr class="noBorder">
+                        <td class="noBorder">
+                            @* This should update the add user by email view *@
+                            <span class="hovertext-left" data-hover="Add a new contact">
+                                <img class="rounded-circle" onclick="searchForUserPartial()" alt="Add a new contact" src="~/assets/img/add-filled-svgrepo-com.svg" width="50" height="50">
+                            </span>
+                        </td>
+                    </tr>
+                </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,138 @@
+        -:    0:Source:C:/dev/libs/SFML/include/SFML/System/NonCopyable.hpp
+        -:    0:Graph:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:////////////////////////////////////////////////////////////
+        -:    2://
+        -:    3:// SFML - Simple and Fast Multimedia Library
+        -:    4:// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
+        -:    5://
+        -:    6:// This software is provided 'as-is', without any express or implied warranty.
+        -:    7:// In no event will the authors be held liable for any damages arising from the use of this software.
+        -:    8://
+        -:    9:// Permission is granted to anyone to use this software for any purpose,
+        -:   10:// including commercial applications, and to alter it and redistribute it freely,
+        -:   11:// subject to the following restrictions:
+        -:   12://
+        -:   13:// 1. The origin of this software must not be misrepresented;
+        -:   14://    you must not claim that you wrote the original software.
+        -:   15://    If you use this software in a product, an acknowledgment
+        -:   16://    in the product documentation would be appreciated but is not required.
+        -:   17://
+        -:   18:// 2. Altered source versions must be plainly marked as such,
+        -:   19://    and must not be misrepresented as being the original software.
+        -:   20://
+        -:   21:// 3. This notice may not be removed or altered from any source distribution.
+        -:   22://
+        -:   23:////////////////////////////////////////////////////////////
+        -:   24:
+        -:   25:#ifndef SFML_NONCOPYABLE_HPP
+        -:   26:#define SFML_NONCOPYABLE_HPP
+        -:   27:
+        -:   28:////////////////////////////////////////////////////////////
+        -:   29:// Headers
+        -:   30:////////////////////////////////////////////////////////////
+        -:   31:#include <SFML/System/Export.hpp>
+        -:   32:
+        -:   33:
+        -:   34:namespace sf
+        -:   35:{
+        -:   36:////////////////////////////////////////////////////////////
+        -:   37:/// \brief Utility class that makes any derived
+        -:   38:///        class non-copyable
+        -:   39:///
+        -:   40:////////////////////////////////////////////////////////////
+        -:   41:class SFML_SYSTEM_API NonCopyable
+        -:   42:{
+        -:   43:protected:
+        -:   44:
+        -:   45:    ////////////////////////////////////////////////////////////
+        -:   46:    /// \brief Default constructor
+        -:   47:    ///
+        -:   48:    /// Because this class has a copy constructor, the compiler
+        -:   49:    /// will not automatically generate the default constructor.
+        -:   50:    /// That's why we must define it explicitly.
+        -:   51:    ///
+        -:   52:    ////////////////////////////////////////////////////////////
+function _ZN2sf11NonCopyableC2Ev called 1 returned 100% blocks executed 100%
+        1:   53:    NonCopyable() {}
+        1:   53-block  0
+        -:   54:    
+        -:   55:    ////////////////////////////////////////////////////////////
+        -:   56:    /// \brief Default destructor
+        -:   57:    ///
+        -:   58:    /// By declaring a protected destructor it's impossible to
+        -:   59:    /// call delete on a pointer of sf::NonCopyable, thus
+        -:   60:    /// preventing possible resource leaks.
+        -:   61:    ///
+        -:   62:    ////////////////////////////////////////////////////////////
+function _ZN2sf11NonCopyableD2Ev called 0 returned 0% blocks executed 0%
+    #####:   63:    ~NonCopyable() {}
+    $$$$$:   63-block  0
+        -:   64:
+        -:   65:private:
+        -:   66:
+        -:   67:    ////////////////////////////////////////////////////////////
+        -:   68:    /// \brief Disabled copy constructor
+        -:   69:    ///
+        -:   70:    /// By making the copy constructor private, the compiler will
+        -:   71:    /// trigger an error if anyone outside tries to use it.
+        -:   72:    /// To prevent NonCopyable or friend classes from using it,
+        -:   73:    /// we also give no definition, so that the linker will
+        -:   74:    /// produce an error if the first protection was inefficient.
+        -:   75:    ///
+        -:   76:    ////////////////////////////////////////////////////////////
+        -:   77:    NonCopyable(const NonCopyable&);
+        -:   78:
+        -:   79:    ////////////////////////////////////////////////////////////
+        -:   80:    /// \brief Disabled assignment operator
+        -:   81:    ///
+        -:   82:    /// By making the assignment operator private, the compiler will
+        -:   83:    /// trigger an error if anyone outside tries to use it.
+        -:   84:    /// To prevent NonCopyable or friend classes from using it,
+        -:   85:    /// we also give no definition, so that the linker will
+        -:   86:    /// produce an error if the first protection was inefficient.
+        -:   87:    ///
+        -:   88:    ////////////////////////////////////////////////////////////
+        -:   89:    NonCopyable& operator =(const NonCopyable&);
+        -:   90:};
+        -:   91:
+        -:   92:} // namespace sf
+        -:   93:
+        -:   94:
+        -:   95:#endif // SFML_NONCOPYABLE_HPP
+        -:   96:
+        -:   97:
+        -:   98:////////////////////////////////////////////////////////////
+        -:   99:/// \class sf::NonCopyable
+        -:  100:/// \ingroup system
+        -:  101:///
+        -:  102:/// This class makes its instances non-copyable, by explicitly
+        -:  103:/// disabling its copy constructor and its assignment operator.
+        -:  104:///
+        -:  105:/// To create a non-copyable class, simply inherit from
+        -:  106:/// sf::NonCopyable.
+        -:  107:///
+        -:  108:/// The type of inheritance (public or private) doesn't matter,
+        -:  109:/// the copy constructor and assignment operator are declared private
+        -:  110:/// in sf::NonCopyable so they will end up being inaccessible in both
+        -:  111:/// cases. Thus you can use a shorter syntax for inheriting from it
+        -:  112:/// (see below).
+        -:  113:///
+        -:  114:/// Usage example:
+        -:  115:/// \code
+        -:  116:/// class MyNonCopyableClass : sf::NonCopyable
+        -:  117:/// {
+        -:  118:///     ...
+        -:  119:/// };
+        -:  120:/// \endcode
+        -:  121:///
+        -:  122:/// Deciding whether the instances of a class can be copied
+        -:  123:/// or not is a very important design choice. You are strongly
+        -:  124:/// encouraged to think about it before writing a class,
+        -:  125:/// and to use sf::NonCopyable when necessary to prevent
+        -:  126:/// many potential future errors when using it. This is also
+        -:  127:/// a very important indication to users of your class.
+        -:  128:///
+        -:  129:////////////////////////////////////////////////////////////

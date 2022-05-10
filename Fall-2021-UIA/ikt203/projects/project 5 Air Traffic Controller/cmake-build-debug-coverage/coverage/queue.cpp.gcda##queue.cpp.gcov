@@ -1,0 +1,1198 @@
+        -:    0:Source:C:/Users/Andreas/ikt203_projects/projects/project 5 Air Traffic Controller/includes/queue.cpp
+        -:    0:Graph:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\includes\queue.cpp.gcno
+        -:    0:Data:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\includes\queue.cpp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1://
+        -:    2:// Created by Andreas on 28.09.2021.
+        -:    3://
+        -:    4:
+        -:    5:#include <cstring>
+        -:    6:#include <list>
+        -:    7:#include <vector>
+        -:    8:#include "queue.h"
+        -:    9:
+        -:   10:
+function _Z12create_queuev called 1 returned 100% blocks executed 67%
+        1:   11:Queue_struct *create_queue() {
+        1:   11-block  0
+        -:   12:    // Allocate the new queue
+        1:   13:    auto *queue = (Queue_struct *) malloc(sizeof(Queue_struct));
+        -:   14:
+        1:   15:    if (queue == nullptr) {
+        1:   15-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    #####:   16:        printf("Error! No memory left.\n");
+    $$$$$:   16-block  0
+call    0 never executed
+    #####:   17:        return nullptr;
+        -:   18:    }
+        -:   19:
+        1:   20:    queue->capacity = MAX_QUEUE_SIZE;
+        -:   21:
+        1:   22:    make_empty_queue(queue);
+        1:   22-block  0
+call    0 returned 1
+        1:   23:    return queue;
+        -:   24:}
+        -:   25:
+function _Z16make_empty_queueP7queue_t called 1 returned 100% blocks executed 100%
+        1:   26:void make_empty_queue(Queue_struct *queue) {
+        1:   26-block  0
+        -:   27:    // TODO: Create dummy node?
+        1:   28:    queue->size = 0;
+        1:   29:    queue->front = 1;
+        1:   30:    queue->tail = 0;
+        -:   31:
+        -:   32:    // Set nodelist.next for each segment of the length.
+       11:   33:    for (int i = 1, p = 0; p < queue->capacity; i++, p++) {
+        1:   33-block  0
+       11:   33-block  1
+branch  0 taken 10 (fallthrough)
+branch  1 taken 1
+       10:   33-block  2
+       10:   34:        queue->nodeList[p].next = i;
+        -:   35:    }
+        1:   36:    queue->nodeList[queue->capacity - 1].next = 0;
+        1:   37:}
+        -:   38:
+function _Z14is_queue_emptyP7queue_t called 84 returned 100% blocks executed 100%
+       84:   39:int is_queue_empty(Queue_struct *queue) {
+       84:   39-block  0
+       84:   40:    return queue->size == 0;
+       84:   40-block  0
+        -:   41:}
+        -:   42:
+function _Z13is_queue_fullP7queue_t called 50 returned 100% blocks executed 100%
+       50:   43:int is_queue_full(Queue_struct *queue) {
+       50:   43-block  0
+       50:   44:    return queue->size == queue->capacity;
+       50:   44-block  0
+        -:   45:}
+        -:   46:
+        -:   47:
+function _Z10queue_sizeP7queue_t called 5496 returned 100% blocks executed 100%
+     5496:   48:int queue_size(Queue_struct *queue) {
+     5496:   48-block  0
+     5496:   49:    return queue->size;
+     5496:   49-block  0
+        -:   50:}
+        -:   51:
+        -:   52:
+        -:   53:
+        -:   54:
+        -:   55:
+        -:   56:
+        -:   57:
+function _Z7dequeueP7queue_t called 17 returned 100% blocks executed 80%
+       17:   58:void dequeue(Queue_struct *queue) {
+       17:   58-block  0
+       17:   59:    if (!is_queue_empty(queue)) {
+       17:   59-block  0
+call    0 returned 17
+branch  1 taken 17 (fallthrough)
+branch  2 taken 0
+        -:   60:        // Dequeue element from queue
+        -:   61:        // Ensure front never crosses array bounds
+       17:   62:        queue->front = queue->nodeList[queue->front].next;
+        -:   63:        // Decrease queue size
+       17:   64:        queue->size--;
+       17:   64-block  0
+        -:   65:    } else {
+    #####:   66:        printf("Error. Attempting to dequeue an empty queue!\n");
+    $$$$$:   66-block  0
+call    0 never executed
+        -:   67:    }
+       17:   68:}
+        -:   69:
+        -:   70:
+        -:   71:
+        -:   72://void dequeue(Queue_struct *queue) {
+        -:   73://    if (!is_queue_empty(queue)) {
+        -:   74://        // Dequeue element from queue
+        -:   75://        queue->nodeList[queue->front];
+        -:   76://        // Ensure front never crosses array bounds
+        -:   77://        queue->front = (queue->front + 1) % queue->capacity;
+        -:   78://        // Decrease queue size
+        -:   79://        queue->size--;
+        -:   80://    } else {
+        -:   81://        printf("Queue_struct is empty!");
+        -:   82://    }
+        -:   83://}
+        -:   84:
+        -:   85:
+function _Z7enqueueP7queue_tPvd called 50 returned 100% blocks executed 100%
+       50:   86:void enqueue(Queue_struct *queue, void *data, double priority) {
+       50:   86-block  0
+       50:   87:    if (!is_queue_full(queue)) {
+       50:   87-block  0
+call    0 returned 50
+branch  1 taken 27 (fallthrough)
+branch  2 taken 23
+       27:   88:        printf("Queue size is now: %i\n", queue_size(queue));
+       27:   88-block  0
+call    0 returned 27
+call    1 returned 27
+        -:   89:        // No sorting yet. Just get it in there.
+        -:   90:        // tail.next. Set priority and data
+       27:   91:        queue->nodeList[queue->nodeList[queue->tail].next].priority = priority;
+       27:   92:        queue->nodeList[queue->nodeList[queue->tail].next].data = data;
+        -:   93:        // Update queue tail to the tail.next
+       27:   94:        queue->tail = queue->nodeList[queue->tail].next;
+       27:   95:        queue->size++;
+        -:   96:        // TODO: Resort list on inserts function
+        -:   97:    } else
+        -:   98:        //printf("Queue_struct is full!\n");
+        -:   99:        NULL;
+       50:  100:}
+        -:  101:
+        -:  102:// TODO: Sort list function
+        -:  103:
+function _Z8peak_topP7queue_t called 0 returned 0% blocks executed 0%
+    #####:  104:void* peak_top(Queue_struct *queue)
+    $$$$$:  104-block  0
+        -:  105:{
+    #####:  106:    if (!is_queue_empty(queue))
+    $$$$$:  106-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  107:        return queue->nodeList[queue->front].data;
+    $$$$$:  107-block  0
+        -:  108:    else
+        -:  109:    {
+    #####:  110:        printf("Trying to peak at empty queue!\n");
+    $$$$$:  110-block  0
+call    0 never executed
+        -:  111:        // TODO: FIX THIS LATER: Need to return something... Add checks to the class
+        -:  112:    }
+    #####:  113:}
+        -:  114:
+function _Z8get_headP7queue_t called 7012 returned 100% blocks executed 100%
+     7012:  115:Node* get_head(Queue_struct *queue)
+     7012:  115-block  0
+        -:  116:{
+     7012:  117:    return &queue->nodeList[queue->front];
+     7012:  117-block  0
+        -:  118:}
+        -:  119:
+function _Z18get_aircraft_indexP7queue_ti called 7012 returned 100% blocks executed 100%
+     7012:  120:void* get_aircraft_index(Queue_struct* queue, int index)
+     7012:  120-block  0
+        -:  121:{
+     7012:  122:    Node* node = get_head(queue);
+     7012:  122-block  0
+call    0 returned 7012
+        -:  123:    int i;
+    37155:  124:    for (i = 0; i < index; i++) {
+    37155:  124-block  0
+branch  0 taken 30143 (fallthrough)
+branch  1 taken 7012
+    30143:  124-block  1
+    30143:  125:        node = &queue->nodeList[node->next];
+        -:  126:    }
+     7012:  127:    return node->data;
+     7012:  127-block  0
+        -:  128:}
+        -:  129:
+function _Z14get_node_indexP7queue_ti called 0 returned 0% blocks executed 0%
+    #####:  130:Node* get_node_index(Queue_struct* queue, int index)
+    $$$$$:  130-block  0
+        -:  131:{
+    #####:  132:    Node* node = get_head(queue);
+    $$$$$:  132-block  0
+call    0 never executed
+        -:  133:    int i;
+    #####:  134:    for (i = 0; i < index; i++) {
+    $$$$$:  134-block  0
+branch  0 never executed
+branch  1 never executed
+    $$$$$:  134-block  1
+    #####:  135:        node = &queue->nodeList[node->next];
+        -:  136:    }
+    #####:  137:    return node;
+    $$$$$:  137-block  0
+        -:  138:}
+        -:  139:
+        -:  140:// Inserts into queue and correct priority location. Assumes queue is already sorted.
+function _Z14sorted_enqueueP7queue_tPvd called 0 returned 0% blocks executed 0%
+    #####:  141:void sorted_enqueue(Queue_struct* queue, void *data, double priority){
+    $$$$$:  141-block  0
+        -:  142:    // FIXME: Må finne en måte å hente ut "lost nodes" som skal peke til ny front, når front endres.
+    #####:  143:    if (!is_queue_full(queue)){
+    $$$$$:  143-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  144:        // Add data and priority to end of queue as a temporary node, from now called new_node.
+    #####:  145:        int new_node = queue->nodeList[queue->tail].next;
+    #####:  146:        queue->nodeList[new_node].priority = priority;
+    #####:  147:        queue->nodeList[new_node].data = data;
+        -:  148:
+        -:  149:        // Locate position in queue such that queue->nodelist->priority > priority.
+    #####:  150:        int temp_node = queue->front;
+        -:  151:
+        -:  152:        int i;
+        -:  153:        // Redirect temp_node to the next node in queue, as long as our priority is greater than current priority.
+    #####:  154:        for (i = 0; i < queue_size(queue) && priority > queue->nodeList[temp_node].priority; ++i) {
+    $$$$$:  154-block  0
+    $$$$$:  154-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    $$$$$:  154-block  2
+branch  3 never executed
+branch  4 never executed
+    $$$$$:  154-block  3
+    $$$$$:  154-block  4
+    $$$$$:  154-block  5
+branch  5 never executed
+branch  6 never executed
+    $$$$$:  154-block  6
+    #####:  155:            temp_node = queue->nodeList[temp_node].next;
+        -:  156:        }
+        -:  157:
+    #####:  158:        if (queue_size(queue) == 0){
+    $$$$$:  158-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  159:            // List was empty, set front and tail to new_node
+    #####:  160:            queue->front = new_node;
+    #####:  161:            queue->tail = new_node;
+    $$$$$:  161-block  0
+        -:  162:        }
+        -:  163:        // -1 because we only increment UNTIL queue_size, not TO queue_size.
+    #####:  164:        else if (i == queue_size(queue)){
+    $$$$$:  164-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  165:            // New node is the biggest in the list. Must update tail.
+    #####:  166:            queue->tail = new_node;
+    $$$$$:  166-block  0
+        -:  167:        }
+    #####:  168:        else if (i == 0){
+    $$$$$:  168-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  169:            // New node is lower priority than the front node. Replace front.
+        -:  170:
+        -:  171:            // Temporary store the new next, and add it to the tail later.
+    #####:  172:            int temp_tail = queue->nodeList[new_node].next;
+        -:  173:
+        -:  174:            // Push insert into the list, and make the queue->front push back.
+        -:  175:            // Set new_node next to front.
+    #####:  176:            queue->nodeList[new_node].next = queue->front;
+        -:  177:
+        -:  178:            // Correct the next of the tail
+    #####:  179:            queue->nodeList[queue->tail].next = temp_tail;
+        -:  180:
+        -:  181:            // Set the front to the new node
+    #####:  182:            queue->front = new_node;
+    $$$$$:  182-block  0
+        -:  183:        }
+        -:  184:        else{
+        -:  185:            // List has a node already, and new node is not the "biggest". Do some magic.
+        -:  186:
+        -:  187:            // Temporary store the new next, and add it to the tail later.
+    #####:  188:            int temp_tail = queue->nodeList[new_node].next;
+        -:  189:
+        -:  190:            // Push insert into the list, and make the temp node push front.
+        -:  191:            // Set new_node next to temp next
+    #####:  192:            queue->nodeList[new_node].next = queue->nodeList[temp_node].next;
+        -:  193:            // set temp next to new_node (old tail.next).
+    #####:  194:            queue->nodeList[temp_node].next = new_node;
+        -:  195:
+        -:  196:            // Correct the next of the tail
+    #####:  197:            queue->nodeList[queue->tail].next = temp_tail;
+    $$$$$:  197-block  0
+        -:  198:        }
+        -:  199:
+        -:  200:        // Increment size
+    #####:  201:        queue->size++;
+    $$$$$:  201-block  0
+        -:  202:    }
+        -:  203:    else{
+    #####:  204:        printf("Error. Attempting to insert into full queue.\n");
+    $$$$$:  204-block  0
+call    0 never executed
+        -:  205:    }
+        -:  206:
+    #####:  207:}
+        -:  208:
+        -:  209:
+        -:  210:
+        -:  211:
+function _Z15move_aircrafts_P7queue_t called 50 returned 100% blocks executed 100%
+       50:  212:void move_aircrafts_(Queue_struct* queue)
+       50:  212-block  0
+        -:  213:{
+      449:  214:    for (int i = queue->front,p=0; p < queue_size(queue); i = queue->nodeList[i].next,p++)
+       50:  214-block  0
+      449:  214-block  1
+call    0 returned 449
+branch  1 taken 399 (fallthrough)
+branch  2 taken 50
+        -:  215:    {
+      399:  216:        ((Aircraft*)queue->nodeList[i].data)->move();
+      399:  216-block  0
+call    0 returned 399
+      399:  217:        ((Aircraft*)queue->nodeList[i].data)->apply_random_changes();
+call    0 returned 399
+      399:  218:        queue->nodeList[i].priority = ((Aircraft*)queue->nodeList[i].data)->calculate_priority();
+call    0 returned 399
+        -:  219:    }
+       50:  220:}
+        -:  221:
+        -:  222:
+        -:  223:
+        -:  224:
+        -:  225:/*
+        -:  226:void swap(int *a, int *b){
+        -:  227:    int t = *a;
+        -:  228:    *a = *b;
+        -:  229:    *b = t;
+        -:  230:}
+        -:  231:
+        -:  232:int partition(void *data, int low, int high){
+        -:  233:    // TODO: void pointer fix.
+        -:  234:    // This will get the last element in the queue.
+        -:  235:    int pivot = data[high];
+        -:  236:    // Starting at index -1.
+        -:  237:    int i = low-1;
+        -:  238:
+        -:  239:    for (int j = low; j <= high; j++){
+        -:  240:        if (data[j] < pivot){
+        -:  241:            i++;
+        -:  242:            // We don't know the datatype so this is not possible.
+        -:  243:            swap(data+i, data+high);
+        -:  244:
+        -:  245:        }
+        -:  246:    }
+        -:  247:
+        -:  248:    // Swap the pivot with the last element that has higher priority.
+        -:  249:    // Hence, there is only lower priority objects in front of the  pivot, and larger after.
+        -:  250:    swap(data+(i+1), data+high);
+        -:  251:
+        -:  252:    // Returns the pivot index.
+        -:  253:    return i+1;
+        -:  254:}
+        -:  255:
+        -:  256:
+        -:  257:void sort_queue(Queue_struct *queue, int low, int high){
+        -:  258:
+        -:  259:    if (low < high){
+        -:  260:        // Partition index.
+        -:  261:        int pi = partition(queue->data, low, high);
+        -:  262:
+        -:  263:        // Going from left to right in the array and sorting.
+        -:  264:        sort_queue(queue, low, pi-1);
+        -:  265:        sort_queue(queue, pi+1, high);
+        -:  266:    }
+        -:  267:
+        -:  268:}
+        -:  269:
+        -:  270:
+        -:  271:*/
+        -:  272:
+        -:  273:
+        -:  274:
+        -:  275:
+        -:  276:// TODO: Make sorting go brrrr
+        -:  277:/* This function takes last element as pivot, places
+        -:  278:   the pivot element at its correct position in sorted
+        -:  279:    array, and places all smaller (smaller than pivot)
+        -:  280:   to left of pivot and all greater elements to right
+        -:  281:   of pivot *//*
+        -:  282:
+        -:  283:void partition(Queue_struct queue, int low, int high) {
+        -:  284:    // pivot (Element to be placed at right position)
+        -:  285:    int pivot = arr[high];
+        -:  286:
+        -:  287:    int i = (low - 1)  // Index of smaller element and indicates the
+        -:  288:    // right position of pivot found so far
+        -:  289:
+        -:  290:    for (int j = low; j <= high - 1; j++) {
+        -:  291:    // If current element is smaller than the pivot
+        -:  292:        if (arr[j] < pivot) {
+        -:  293:            i++;    // increment index of smaller element
+        -:  294:            swap
+        -:  295:            arr[i] and arr[j]
+        -:  296:        }
+        -:  297:    }
+        -:  298:    swap
+        -:  299:    arr[i + 1]
+        -:  300:    and arr[high])
+        -:  301:    return (i + 1)
+        -:  302:}
+        -:  303:
+        -:  304:
+        -:  305:*/
+        -:  306:/* low  --> Starting index,  high  --> Ending index *//*
+        -:  307:
+        -:  308:void quickSort(Queue_struct queue, int low, int high) {
+        -:  309:    if (low < high) {
+        -:  310:        */
+        -:  311:/* pi is partitioning index, queue[pi] is now at right place *//*
+        -:  312:
+        -:  313:        int pi = partition(arr, low, high);
+        -:  314:        quickSort(arr, low, pi - 1);  // Before pi
+        -:  315:        quickSort(arr, pi + 1, high); // After pi
+        -:  316:    }
+        -:  317:}
+        -:  318:*/
+        -:  319:
+        -:  320:
+        -:  321:
+        -:  322:
+        -:  323:
+        -:  324:/*
+        -:  325:
+        -:  326:
+        -:  327:// Swap two queue elements order
+        -:  328:void swap_nodes(Node *x, Node *y)
+        -:  329:{
+        -:  330:    int temp;
+        -:  331:
+        -:  332:    temp = x->next;
+        -:  333:    x->next = y->next;
+        -:  334:    y->next = temp;
+        -:  335:}
+        -:  336:
+        -:  337:// Quick sort implementation of sort queue
+        -:  338:void QuickSort(int low, int high, Queue_struct * queue)
+        -:  339:{
+        -:  340:    // Initialize variables
+        -:  341:    int i = low, j = high;
+        -:  342:    double z;
+        -:  343:
+        -:  344:    // FIXME: This does not work for a linked list. Can not find the pivot this way.
+        -:  345:    // Set the z middle point
+        -:  346:    int split = (low + high) / 2;
+        -:  347:    z=queue->nodeList[split].priority;
+        -:  348:
+        -:  349:    // Do while is messy. But should work.
+        -:  350:    do
+        -:  351:    {
+        -:  352:        // Increment i until it is greater than z
+        -:  353:        while (queue->nodeList[i].priority < z){
+        -:  354:            i = queue->nodeList[i].next;
+        -:  355:
+        -:  356:        }
+        -:  357:
+        -:  358:        // Decrement j until is it lower than z
+        -:  359:        while (queue->nodeList[j].priority > z) {
+        -:  360:            // Fuck me... We have no previous... Need to iterate from low to high -1, or implement prev.
+        -:  361:            Node temporary_workaround = queue->nodeList[i];
+        -:  362:            Node previous_node = temporary_workaround;
+        -:  363:            while (temporary_workaround.next != z){
+        -:  364:                previous_node = temporary_workaround;
+        -:  365:                temporary_workaround = queue->nodeList[temporary_workaround.next];
+        -:  366:            }
+        -:  367:            j = queue->nodeList[previous_node.next].next;
+        -:  368:        }
+        -:  369:
+        -:  370:        // Swap nodes if i.pri < j pri
+        -:  371:        if (queue->nodeList[i].priority <= queue->nodeList[j].priority)
+        -:  372:        {
+        -:  373:            swap_nodes(&queue->nodeList[i], &queue->nodeList[j]);
+        -:  374:            // Increment i
+        -:  375:            i = queue->nodeList[i].next;
+        -:  376:            // Decrement j
+        -:  377:            Node temporary_workaround = queue->nodeList[i];
+        -:  378:            Node previous_node = temporary_workaround;
+        -:  379:            while (temporary_workaround.next != z){
+        -:  380:                previous_node = temporary_workaround;
+        -:  381:                temporary_workaround = queue->nodeList[temporary_workaround.next];
+        -:  382:            }
+        -:  383:            j = queue->nodeList[previous_node.next].next;
+        -:  384:        }
+        -:  385:    } while (queue->nodeList[i].priority <= queue->nodeList[j].priority);
+        -:  386:
+        -:  387:    // Recursively call sorts for lower part
+        -:  388:    if (low < queue->nodeList[j].priority)
+        -:  389:        QuickSort(low, j, queue);
+        -:  390:
+        -:  391:    // Recursively call sorts for higher part
+        -:  392:    if (queue->nodeList[i].priority < high)
+        -:  393:        QuickSort(i, high, queue);
+        -:  394:}
+        -:  395:
+        -:  396:
+        -:  397:*/
+        -:  398:
+        -:  399:
+function _Z8new_sortP7queue_t called 50 returned 100% blocks executed 89%
+       50:  400:void new_sort(Queue_struct* queue)
+       50:  400-block  0
+        -:  401:{
+        -:  402:    // No need to sort if the queue size is 0 or 1
+       50:  403:    if (queue->size == 0 || queue->size == 1)
+       50:  403-block  0
+branch  0 taken 50 (fallthrough)
+branch  1 taken 0
+       50:  403-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 49
+       50:  404:        return;
+        1:  404-block  0
+        1:  404-block  1
+       50:  404-block  2
+        -:  405:
+        -:  406:    int index;
+        -:  407:    int current_lowest;
+        -:  408:    int node_that_the_tail_is_pointing_at;
+       49:  409:    int cursor = queue->front;
+        -:  410:    int node_pointing_to_front;
+        -:  411:    double current_priority;
+        -:  412:
+        -:  413:    // The sorted array will store the nodes in the correct order
+       49:  414:    int sorted_arr[queue->size];
+        -:  415:
+        -:  416:    // This vector is going to store nodes that are currently not assigned a position yet.
+        -:  417:    // They will be moved out of the container_list and into the sorted array once their position is decided
+       98:  418:    std::vector<int> container_list;
+       49:  418-block  0
+call    0 returned 49
+       49:  418-block  1
+call    1 returned 49
+    %%%%%:  418-block  2
+call    2 never executed
+        -:  419:
+      447:  420:    for (int i = 0; i < queue->size; ++i) {
+      447:  420-block  0
+branch  0 taken 398 (fallthrough)
+branch  1 taken 49
+      398:  420-block  1
+      398:  421:        container_list.push_back(cursor);
+      398:  421-block  0
+call    0 returned 398
+branch  1 taken 398 (fallthrough)
+branch  2 taken 0 (throw)
+      398:  422:        cursor = queue->nodeList[cursor].next;
+        -:  423:    }
+        -:  424:
+        -:  425:
+        -:  426:    // Getting the node pointing to the front if the tail isn't pointing to it
+       49:  427:    if (queue->size != queue->capacity)
+       49:  427-block  0
+branch  0 taken 17 (fallthrough)
+branch  1 taken 32
+        -:  428:    {
+      109:  429:        for (int i = queue->tail; queue->nodeList[i].next != queue->front; i = queue->nodeList[i].next)
+       17:  429-block  0
+      109:  429-block  1
+branch  0 taken 92 (fallthrough)
+branch  1 taken 17
+       92:  429-block  2
+       17:  429-block  3
+        -:  430:        {
+       92:  431:            node_pointing_to_front = queue->nodeList[i].next;
+        -:  432:        }
+        -:  433:    }
+        -:  434:
+        -:  435:    // Standard bubble sort
+      447:  436:    for (int i = 0; i < queue->size; ++i) {
+       49:  436-block  0
+      447:  436-block  1
+branch  0 taken 398 (fallthrough)
+branch  1 taken 49
+      398:  436-block  2
+      398:  437:        index = 0;
+      398:  438:        cursor = container_list[0];
+      398:  438-block  0
+call    0 returned 398
+      398:  439:        current_priority = queue->nodeList[cursor].priority;
+      398:  440:        current_lowest = cursor;
+     2411:  441:        for (int j = 0; j < container_list.size(); ++j) {
+     2411:  441-block  0
+call    0 returned 2411
+branch  1 taken 2013 (fallthrough)
+branch  2 taken 398
+     2013:  442:            if (queue->nodeList[cursor].priority < current_priority)
+     2013:  442-block  0
+branch  0 taken 48 (fallthrough)
+branch  1 taken 1965
+        -:  443:            {
+       48:  444:                current_priority = queue->nodeList[cursor].priority;
+       48:  445:                current_lowest = cursor;
+       48:  446:                index = j;
+       48:  446-block  0
+        -:  447:            }
+        -:  448:            // It needs to be j+1 because we need the next node. The current node is just j
+        -:  449:            // We can't just start j at 1 because that would make the index go out of bounds+
+     2013:  450:            cursor = container_list[1+j];
+     2013:  450-block  0
+call    0 returned 2013
+        -:  451:        }
+        -:  452:        // Popping out nodes that are given a position in the sorted_arr
+      398:  453:        container_list.erase(container_list.begin()+index);
+      398:  453-block  0
+call    0 returned 398
+call    1 returned 398
+call    2 returned 398
+call    3 returned 398
+branch  4 taken 398 (fallthrough)
+branch  5 taken 0 (throw)
+    %%%%%:  453-block  1
+    %%%%%:  453-block  2
+    %%%%%:  453-block  3
+        -:  454:        // Giving the node with the current highest priority (lowest number) the correct position in the sorted_arr
+      398:  455:        sorted_arr[i] = current_lowest;
+        -:  456:    }
+        -:  457:
+        -:  458:    // Different cases for a full and not full queue
+       49:  459:    if (queue->size == queue->capacity)
+       49:  459-block  0
+branch  0 taken 32 (fallthrough)
+branch  1 taken 17
+        -:  460:    {
+        -:  461:        // Connecting the sorted_arr
+      320:  462:        for (int i = 0; i < queue->capacity-1; ++i) {
+       32:  462-block  0
+      320:  462-block  1
+branch  0 taken 288 (fallthrough)
+branch  1 taken 32
+      288:  462-block  2
+      288:  463:            queue->nodeList[sorted_arr[i]].next = sorted_arr[i+1];
+        -:  464:        }
+        -:  465:        // The array is at max size, so the last item in the sorted_arr should be pointing at the first to make it circular
+       32:  466:        queue->nodeList[sorted_arr[queue->capacity-1]].next = sorted_arr[0];
+        -:  467:        // Tail is the end of the sorted_arr
+       32:  468:        queue->tail = sorted_arr[queue->capacity-1];
+        -:  469:        // Front is the beginning of the sorted_arr
+       32:  470:        queue->front = sorted_arr[0];
+       32:  470-block  0
+        -:  471:    }
+        -:  472:    else
+        -:  473:    {
+        -:  474:        // Getting the node that the tail is pointing at before soring so that the last item in the sorted_arr can point at it
+       17:  475:        node_that_the_tail_is_pointing_at = queue->nodeList[queue->tail].next;
+        -:  476:        // Connecting the sorted_arr
+       78:  477:        for (int i = 0; i < queue->size-1; ++i) {
+       17:  477-block  0
+       78:  477-block  1
+branch  0 taken 61 (fallthrough)
+branch  1 taken 17
+       61:  477-block  2
+       61:  478:            queue->nodeList[sorted_arr[i]].next = sorted_arr[i+1];
+        -:  479:        }
+        -:  480:        // Making the last item in sorted_arr point at whatever the tail was pointing at before
+       17:  481:        queue->nodeList[sorted_arr[queue->size-1]].next = node_that_the_tail_is_pointing_at;
+        -:  482:        // Setting the node that previous pointed at front to point at the potential new front
+       17:  483:        queue->nodeList[node_pointing_to_front].next = sorted_arr[0];
+        -:  484:        // Tail is the end of the sorted_arr
+       17:  485:        queue->tail = sorted_arr[queue->size-1];
+        -:  486:        // Front is the beginning of the sorted_arr
+       17:  487:        queue->front = sorted_arr[0];
+       17:  487-block  0
+       50:  488:    }
+        -:  489:}
+        -:  490:
+        -:  491:
+        -:  492:
+        -:  493:
+        -:  494:
+        -:  495:
+        -:  496:
+        -:  497:
+        -:  498:
+        -:  499:
+        -:  500:
+        -:  501:
+        -:  502:
+        -:  503:
+        -:  504:
+        -:  505:
+        -:  506:
+        -:  507:
+        -:  508:
+        -:  509:
+        -:  510:
+        -:  511:
+        -:  512:
+        -:  513:
+        -:  514:
+        -:  515:
+        -:  516:
+        -:  517:
+        -:  518:
+        -:  519:
+        -:  520:
+        -:  521:
+        -:  522:// Error handling is not working...
+function _Z14error_handlingP7queue_ti called 0 returned 0% blocks executed 0%
+    #####:  523:void error_handling(Queue_struct* queue,int fucked_up_node)
+    $$$$$:  523-block  0
+        -:  524:{
+    #####:  525:    int flag = true;
+    #####:  526:    int next;int error_array[queue->capacity];
+    $$$$$:  526-block  0
+    #####:  527:    while (flag) {
+    $$$$$:  527-block  0
+branch  0 never executed
+branch  1 never executed
+    $$$$$:  527-block  1
+        -:  528:
+    #####:  529:        memset(error_array, -1, queue->capacity);
+        -:  530:
+    #####:  531:        for (int i = 0; i < queue->capacity; ++i) {
+    $$$$$:  531-block  0
+    $$$$$:  531-block  1
+branch  0 never executed
+branch  1 never executed
+    $$$$$:  531-block  2
+    #####:  532:            error_array[queue->nodeList[i].next] = queue->nodeList[i].next;
+        -:  533:        }
+        -:  534:
+        -:  535:
+    #####:  536:        next = queue->front;
+    #####:  537:        for (int i = 0; i < queue_size(queue); i++) {
+    $$$$$:  537-block  0
+    $$$$$:  537-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    $$$$$:  537-block  2
+    #####:  538:            if (queue->nodeList[next].next == next) {
+    $$$$$:  538-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  539:                fucked_up_node = next;
+    #####:  540:                flag = true;
+    #####:  541:                break;
+    $$$$$:  541-block  0
+        -:  542:
+        -:  543:            }
+    #####:  544:            flag = false;
+    #####:  545:            next = queue->nodeList[next].next;
+        -:  546:        }
+        -:  547:
+        -:  548:
+    #####:  549:        if (flag){
+    $$$$$:  549-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  550:            for (int i = 0; i < queue->capacity; ++i) {
+    $$$$$:  550-block  0
+    $$$$$:  550-block  1
+branch  0 never executed
+branch  1 never executed
+    $$$$$:  550-block  2
+    $$$$$:  550-block  3
+    #####:  551:                if (error_array[i] != i) {
+    $$$$$:  551-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  552:                    queue->nodeList[fucked_up_node].next = i;
+    #####:  553:                    break;
+    $$$$$:  553-block  0
+        -:  554:                }
+        -:  555:            }
+        -:  556:        }
+    #####:  557:    }
+    #####:  558:}
+        -:  559:
+        -:  560:// Bubble sort implementation of queue sort
+function _Z10sort_queueP7queue_t called 0 returned 0% blocks executed 0%
+    #####:  561:void sort_queue(Queue_struct *queue)
+    $$$$$:  561-block  0
+        -:  562:{
+        -:  563:    int fucked_up_node;
+        -:  564:    int prev_node_placeholder;
+        -:  565:    int next_node_placeholder;
+        -:  566:    Node current_node;
+        -:  567:    int iterator_inner;
+        -:  568:    int iterator_outer;
+        -:  569:    double current_priority;
+        -:  570:    Node* node_pointing_to_the_first_element;
+    #####:  571:    bool flag = false;
+        -:  572:    Node* prev_node;
+        -:  573:    int index;
+        -:  574:
+        -:  575:
+        -:  576:
+        -:  577:
+    #####:  578:    for (iterator_outer = 0; iterator_outer < queue_size(queue); iterator_outer++) {
+    $$$$$:  578-block  0
+    $$$$$:  578-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    $$$$$:  578-block  2
+    #####:  579:        current_node = *get_node_index(queue,iterator_outer);
+    $$$$$:  579-block  0
+call    0 never executed
+    #####:  580:        current_priority = current_node.priority;
+    #####:  581:        next_node_placeholder = current_node.next;
+    #####:  582:        prev_node_placeholder = 0;
+    #####:  583:        for (iterator_inner=iterator_outer; iterator_inner < queue_size(queue); iterator_inner++) {
+    $$$$$:  583-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    $$$$$:  583-block  1
+    #####:  584:            current_node = *get_node_index(queue,iterator_inner);
+    $$$$$:  584-block  0
+call    0 never executed
+    #####:  585:            if (current_node.priority < current_priority) {
+branch  0 never executed
+branch  1 never executed
+    #####:  586:                prev_node = get_node_index(queue,iterator_inner-1);
+    $$$$$:  586-block  0
+call    0 never executed
+    #####:  587:                prev_node_placeholder = prev_node->next;
+    #####:  588:                current_priority = current_node.priority;
+    #####:  589:                next_node_placeholder = current_node.next;
+    #####:  590:                index = iterator_inner;
+        -:  591:
+    #####:  592:                flag = true;
+        -:  593:            }
+        -:  594:
+        -:  595:        }
+        -:  596:
+        -:  597:
+    #####:  598:        fucked_up_node = -1;
+    #####:  599:        if(flag)
+    $$$$$:  599-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  600:        {
+        -:  601:
+    #####:  602:            Node* first_node = get_node_index(queue,iterator_outer);
+    $$$$$:  602-block  0
+call    0 never executed
+    #####:  603:            for (int k = queue->front, iterator = 0;
+    $$$$$:  603-block  0
+    #####:  604:                 iterator < queue->capacity; k = queue->nodeList[k].next, iterator++)
+    $$$$$:  604-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  605:            {
+    #####:  606:                if (queue->nodeList[queue->nodeList[queue->nodeList[k].next].next].next == first_node->next)
+    $$$$$:  606-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  607:                {
+    #####:  608:                    node_pointing_to_the_first_element = &queue->nodeList[queue->nodeList[k].next];
+    #####:  609:                    break;
+    $$$$$:  609-block  0
+        -:  610:                }
+        -:  611:            }
+        -:  612:
+    #####:  613:            if (iterator_outer != 0 && first_node->next != prev_node_placeholder)
+    $$$$$:  613-block  0
+branch  0 never executed
+branch  1 never executed
+    $$$$$:  613-block  1
+branch  2 never executed
+branch  3 never executed
+        -:  614:            {
+        -:  615:
+    #####:  616:                int old_node_temp = first_node->next;
+    #####:  617:                int prev_node_temp = prev_node->next;
+        -:  618:                // This is working do not touch
+    #####:  619:                Node* node_pointing_to_first_node = get_node_index(queue,iterator_outer-1);
+    $$$$$:  619-block  0
+call    0 never executed
+        -:  620:
+    #####:  621:                if (prev_node_placeholder == queue->tail)
+branch  0 never executed
+branch  1 never executed
+    #####:  622:                    queue->tail = node_pointing_to_the_first_element->next;
+    $$$$$:  622-block  0
+        -:  623:
+    #####:  624:                int o_nn = queue->nodeList[node_pointing_to_first_node->next].next; // node_pointing_to_first_node next next
+    #####:  625:                queue->nodeList[node_pointing_to_first_node->next].next = next_node_placeholder;
+    #####:  626:                prev_node->next = node_pointing_to_first_node->next;
+    #####:  627:                node_pointing_to_first_node->next = prev_node_placeholder;
+    #####:  628:                queue->nodeList[prev_node_placeholder].next = o_nn;
+    #####:  629:                flag = false;
+        -:  630:
+        -:  631:                // FIRST
+        -:  632:                int next;
+    #####:  633:                next = queue->front;
+    #####:  634:                for (int i = 0; i < queue_size(queue); i++)
+    $$$$$:  634-block  0
+    $$$$$:  634-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    $$$$$:  634-block  2
+        -:  635:                {
+    #####:  636:                    if (queue->nodeList[next].next == next)
+    $$$$$:  636-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  637:                    {
+    #####:  638:                        fucked_up_node = next;
+    #####:  639:                        break;
+    $$$$$:  639-block  0
+        -:  640:                    }
+    #####:  641:                    next = queue->nodeList[next].next;
+        -:  642:                }
+    #####:  643:                if (fucked_up_node != -1)
+    $$$$$:  643-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  644:                    error_handling(queue, fucked_up_node);
+    $$$$$:  644-block  0
+call    0 never executed
+    $$$$$:  644-block  1
+        -:  645:
+        -:  646:            }
+        -:  647:            else
+        -:  648:            {
+        -:  649:
+        -:  650:
+        -:  651:
+    #####:  652:                if (first_node->next == prev_node_placeholder && iterator_outer == 0)
+    $$$$$:  652-block  0
+branch  0 never executed
+branch  1 never executed
+    $$$$$:  652-block  1
+branch  2 never executed
+branch  3 never executed
+        -:  653:                {
+        -:  654:
+        -:  655:
+        -:  656:
+        -:  657:                    // This is not working
+        -:  658:
+    #####:  659:                    if (prev_node_placeholder == queue->tail)
+    $$$$$:  659-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  660:                        queue->tail = node_pointing_to_the_first_element->next;
+    $$$$$:  660-block  0
+        -:  661:
+    #####:  662:                    queue->nodeList[queue->front].next = next_node_placeholder;
+    #####:  663:                    queue->nodeList[prev_node_placeholder].next = queue->front;
+    #####:  664:                    queue->front = prev_node_placeholder;
+    #####:  665:                    node_pointing_to_the_first_element->next = prev_node_placeholder;
+    #####:  666:                    flag = false;
+        -:  667:
+        -:  668:                    // SECOND
+        -:  669:                    int next;
+    #####:  670:                    next = queue->front;
+    #####:  671:                    for (int i = 0; i < queue_size(queue); i++)
+    $$$$$:  671-block  0
+    $$$$$:  671-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    $$$$$:  671-block  2
+        -:  672:                    {
+    #####:  673:                        if (queue->nodeList[next].next == next)
+    $$$$$:  673-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  674:                        {
+    #####:  675:                            fucked_up_node = next;
+    #####:  676:                            break;
+    $$$$$:  676-block  0
+        -:  677:                        }
+    #####:  678:                        next = queue->nodeList[next].next;
+        -:  679:                    }
+    #####:  680:                    if (fucked_up_node != -1)
+    $$$$$:  680-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  681:                        error_handling(queue, fucked_up_node);
+    $$$$$:  681-block  0
+call    0 never executed
+    $$$$$:  681-block  1
+        -:  682:                }
+    #####:  683:                else if (first_node->next == prev_node_placeholder && iterator_outer != 0)
+    $$$$$:  683-block  0
+branch  0 never executed
+branch  1 never executed
+    $$$$$:  683-block  1
+branch  2 never executed
+branch  3 never executed
+        -:  684:                {
+        -:  685:
+        -:  686:
+        -:  687:                    // This is working do not touch
+        -:  688:
+    #####:  689:                    int node_pointing_to_the_first_element_temp = node_pointing_to_the_first_element->next;
+    #####:  690:                    int prev_node_temp = prev_node->next;
+        -:  691:
+    #####:  692:                    if (prev_node_placeholder == queue->tail)
+    $$$$$:  692-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  693:                        queue->tail = node_pointing_to_the_first_element->next;
+    $$$$$:  693-block  0
+        -:  694:
+    #####:  695:                    int temp = node_pointing_to_the_first_element->next;
+    #####:  696:                    node_pointing_to_the_first_element->next = prev_node_placeholder; // Here old node is the node before the current node
+    #####:  697:                    queue->nodeList[prev_node_placeholder].next = temp;
+    #####:  698:                    prev_node->next = next_node_placeholder;
+    #####:  699:                    flag = false;
+        -:  700:
+        -:  701:
+        -:  702:                    // THIRD
+        -:  703:                    int next;
+    #####:  704:                    next = queue->front;
+    #####:  705:                    for (int i = 0; i < queue_size(queue); i++)
+    $$$$$:  705-block  0
+    $$$$$:  705-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    $$$$$:  705-block  2
+        -:  706:                    {
+    #####:  707:                        if (queue->nodeList[next].next == next)
+    $$$$$:  707-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  708:                        {
+    #####:  709:                            fucked_up_node = next;
+    #####:  710:                            break;
+    $$$$$:  710-block  0
+        -:  711:                        }
+    #####:  712:                        next = queue->nodeList[next].next;
+        -:  713:                    }
+    #####:  714:                    if (fucked_up_node != -1)
+    $$$$$:  714-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  715:                        error_handling(queue, fucked_up_node);
+    $$$$$:  715-block  0
+call    0 never executed
+    $$$$$:  715-block  1
+        -:  716:                }
+    #####:  717:                else if (iterator_outer == 0)
+    $$$$$:  717-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  718:                {
+        -:  719:                    // This is working do not touch
+    #####:  720:                    Node* node_pointing_to_current_node = get_node_index(queue,index-1);
+    $$$$$:  720-block  0
+call    0 never executed
+        -:  721:
+    #####:  722:                    if (prev_node_placeholder == queue->tail)
+branch  0 never executed
+branch  1 never executed
+    #####:  723:                        queue->tail = node_pointing_to_the_first_element->next;
+    $$$$$:  723-block  0
+        -:  724:
+    #####:  725:                    if (queue->front == queue->tail && queue_size(queue) == queue->capacity)
+    $$$$$:  725-block  0
+branch  0 never executed
+branch  1 never executed
+    $$$$$:  725-block  1
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+    $$$$$:  725-block  2
+    $$$$$:  725-block  3
+    $$$$$:  725-block  4
+branch  5 never executed
+branch  6 never executed
+        -:  726:                    {
+    #####:  727:                        queue->nodeList[prev_node_placeholder].next = queue->nodeList[queue->front].next;
+    #####:  728:                        queue->nodeList[queue->front].next = prev_node_placeholder;
+    #####:  729:                        node_pointing_to_current_node->next = next_node_placeholder;
+    #####:  730:                        queue->front = prev_node_placeholder;
+        -:  731:
+        -:  732:
+        -:  733:                        // FOURTH
+        -:  734:                        int next;
+    #####:  735:                        next = queue->front;
+    #####:  736:                        for (int i = 0; i < queue_size(queue); i++)
+    $$$$$:  736-block  0
+    $$$$$:  736-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    $$$$$:  736-block  2
+        -:  737:                        {
+    #####:  738:                            if (queue->nodeList[next].next == next)
+    $$$$$:  738-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  739:                            {
+    #####:  740:                                fucked_up_node = next;
+    #####:  741:                                break;
+    $$$$$:  741-block  0
+        -:  742:                            }
+    #####:  743:                            next = queue->nodeList[next].next;
+        -:  744:                        }
+    #####:  745:                        if (fucked_up_node != -1)
+    $$$$$:  745-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  746:                            error_handling(queue, fucked_up_node);
+    $$$$$:  746-block  0
+call    0 never executed
+    $$$$$:  746-block  1
+        -:  747:
+        -:  748:
+        -:  749:                    }
+        -:  750:                    else
+        -:  751:                    {
+    #####:  752:                        node_pointing_to_current_node->next = queue->front;
+    #####:  753:                        int temp = queue->nodeList[queue->front].next;
+    #####:  754:                        queue->nodeList[queue->front].next = next_node_placeholder;
+    #####:  755:                        queue->nodeList[prev_node_placeholder].next = temp;
+    #####:  756:                        queue->front = prev_node_placeholder;
+    #####:  757:                        node_pointing_to_the_first_element->next = prev_node_placeholder;
+    #####:  758:                        flag = false;
+        -:  759:
+        -:  760:
+        -:  761:                        // FIFTH
+        -:  762:                        int next;
+    #####:  763:                        next = queue->front;
+    #####:  764:                        for (int i = 0; i < queue_size(queue); i++)
+    $$$$$:  764-block  0
+    $$$$$:  764-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    $$$$$:  764-block  2
+        -:  765:                        {
+    #####:  766:                            if (queue->nodeList[next].next == next)
+    $$$$$:  766-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  767:                            {
+    #####:  768:                                fucked_up_node = next;
+    #####:  769:                                break;
+    $$$$$:  769-block  0
+        -:  770:                            }
+    #####:  771:                            next = queue->nodeList[next].next;
+        -:  772:                        }
+    #####:  773:                        if (fucked_up_node != -1)
+    $$$$$:  773-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  774:                            error_handling(queue, fucked_up_node);
+    $$$$$:  774-block  0
+call    0 never executed
+    $$$$$:  774-block  1
+    $$$$$:  774-block  2
+        -:  775:                    }
+        -:  776:                }
+        -:  777:            }
+        -:  778:        }
+        -:  779:    }
+    #####:  780:}
+        -:  781:
+        -:  782:
+        -:  783:
+        -:  784:
+        -:  785:
+        -:  786:
+        -:  787:
+        -:  788:
+        -:  789:
+        -:  790:
+        -:  791:
+        -:  792:
+        -:  793:
+        -:  794:

@@ -1,0 +1,9 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=WWWROOT_005CJS_005CHTML_002DDURATION_002DPICKER_002EMIN_002EJS/@EntryIndexedValue">wwwroot\js\html-duration-picker.min.js</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=DIST_005CHTML_002DDURATION_002DPICKER_002EMIN_002EJS/@EntryIndexedValue"></s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=WWWROOT_005CHTML_002DDURATION_002DPICKER_002EMIN_002EJS/@EntryIndexedValue"></s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=WWWROOT_005CNADCHIF_002DHTML_002DDURATION_002DPICKER_002EJS_002DD223111/@EntryIndexedValue"></s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=DIST_005CHTML_002DDURATION_002DPICKER_002EMIN_002EJS/@EntryIndexedValue">dist\html-duration-picker.min.js</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=WWWROOT_005CHTML_002DDURATION_002DPICKER_002EMIN_002EJS/@EntryIndexedValue">wwwroot\html-duration-picker.min.js</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=WWWROOT_005CJS_005CHTML_002DDURATION_002DPICKER_002EMIN_002EJS/@EntryIndexedValue">wwwroot\js\html-duration-picker.min.js</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=WWWROOT_005CNADCHIF_002DHTML_002DDURATION_002DPICKER_002EJS_002DD223111/@EntryIndexedValue">wwwroot\nadchif-html-duration-picker.js-d223111</s:String></wpf:ResourceDictionary>

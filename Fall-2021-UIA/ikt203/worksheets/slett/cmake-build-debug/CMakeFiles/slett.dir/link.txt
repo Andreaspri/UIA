@@ -1,0 +1,3 @@
+C:\Users\Andreas\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\212.5080.54\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\slett.dir/objects.a
+C:\mingw64\bin\ar.exe cr CMakeFiles\slett.dir/objects.a @CMakeFiles\slett.dir\objects1.rsp
+C:\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\slett.dir/objects.a -Wl,--no-whole-archive -o slett.exe -Wl,--out-implib,libslett.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\slett.dir\linklibs.rsp

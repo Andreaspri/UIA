@@ -1,0 +1,26 @@
+﻿@model GuestModel
+@{
+    ViewData["Title"] = "New entry page";
+}
+
+
+
+<form method="post">
+    <ul>
+        <li>
+            <label asp-for="Name"></label>
+            <input asp-for="Name">
+        </li>
+        <li>
+        <label asp-for="Title"></label>
+        <input asp-for="Title">
+        </li>
+
+        <li>
+        <label asp-for="Message"></label>
+        <textarea asp-for="Message"></textarea>
+        </li>
+    </ul>
+    <input type="submit" id="Submit">
+    
+</form>

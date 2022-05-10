@@ -1,0 +1,18 @@
+﻿@model IEnumerable<assignment_3.Models.GuestModel>
+
+
+
+<a id="Add" asp-area="" asp-controller="Guestbook" asp-action="Add">Add</a>
+<h1 class="special-border">All entries</h1>
+
+
+@foreach (var item in Model)
+{
+    <div class="entry-box">
+        <h3>Name: @item.Name</h3>
+        <h3>Title: @item.Title</h3>
+        <p>@item.Message)</p>
+    </div>
+}
+
+

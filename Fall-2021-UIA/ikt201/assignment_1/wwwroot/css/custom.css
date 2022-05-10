@@ -1,0 +1,97 @@
+﻿/*
+This resets everithing in this file to these setting altso calsed a full reset
+*{
+    margin: 0;
+    padding: 0;
+}
+*/
+
+body{
+    background-color: #f4f4f4;
+    color: #555555;
+    /*
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    /*
+    /* Same as above */
+    font: normal 16px Arial, Helvetica, sans-serif;
+
+    line-height: 1.6em;
+    margin: 0;
+}
+
+#colors{
+    color: #1b1e21;
+}
+
+
+
+.box-1{
+    background-color: #007bff;
+    color: #fff;
+    
+    
+    border: 1px black solid;
+    border-radius: 5px;
+    
+    padding: 20px;
+
+    margin: 20px 0; /* Moves it away from the borders of the screen */
+
+
+}
+
+.box-1 h1{ /* Changes for all h1 within this class */
+    font-family: Tahoma;
+    font-weight: 800;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    word-spacing: 0.05em;
+}
+
+.box-2{
+    border: 3px dotted #ccc;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+
+
+.categories{
+    border: 1px #ccc solid;
+    padding: 5px;
+    border-radius: 15px; /* Smoothens the borders "curves them" */
+}
+
+.categories h2{
+    text-align: center;
+}
+
+.categories ul{
+    padding: 30px;
+}
+
+.categories li{
+    
+    padding-top: 5px;
+    padding-bottom: 2px;
+    border-bottom: dotted 1px #333;
+}
+
+
+.adjust{
+    padding: 20px;
+}
+
+.move{
+    padding-top: 30px;
+    padding-bottom: 100px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+

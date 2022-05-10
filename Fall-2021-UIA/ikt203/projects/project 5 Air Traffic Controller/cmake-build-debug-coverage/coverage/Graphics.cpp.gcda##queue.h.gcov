@@ -1,0 +1,160 @@
+        -:    0:Source:C:/Users/Andreas/ikt203_projects/projects/project 5 Air Traffic Controller/includes/queue.h
+        -:    0:Graph:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\includes\Graphics.cpp.gcno
+        -:    0:Data:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\includes\Graphics.cpp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <cstdio>
+        -:    2:#include <cstdlib>
+        -:    3:#include <string>
+        -:    4:#include <stdexcept>
+        -:    5:
+        -:    6:#ifndef PROJECT_5_AIR_TRAFFIC_CONTROLLER_QUEUE_H
+        -:    7:#define PROJECT_5_AIR_TRAFFIC_CONTROLLER_QUEUE_H
+        -:    8:
+        -:    9:#define MAX_QUEUE_SIZE 10
+        -:   10:
+        -:   11:#include "aircraft.h"
+        -:   12:
+        -:   13:
+        -:   14:typedef struct node {
+        -:   15:    double priority;       // Handled by external class
+        -:   16:    void *data;         // Aircrafts, yay!
+        -:   17:    int next;
+        -:   18:} Node;
+        -:   19:
+        -:   20:
+        -:   21:typedef struct queue_t {
+        -:   22:    int front;
+        -:   23:    int tail;
+        -:   24:    int size;
+        -:   25:    int capacity;
+        -:   26:    Node nodeList[MAX_QUEUE_SIZE];
+        -:   27:} Queue_struct;
+        -:   28:
+        -:   29:
+        -:   30:Queue_struct *create_queue();
+        -:   31:
+        -:   32:void make_empty_queue(Queue_struct *queue);
+        -:   33:
+        -:   34:int is_queue_full(Queue_struct *queue);
+        -:   35:
+        -:   36:int is_queue_empty(Queue_struct *);
+        -:   37:
+        -:   38:int queue_size(Queue_struct *queue);
+        -:   39:
+        -:   40:void dequeue(Queue_struct *queue);
+        -:   41:
+        -:   42:void enqueue(Queue_struct *queue, void *data, double priority);
+        -:   43:
+        -:   44:void sorted_enqueue(Queue_struct*, void *, double);
+        -:   45:
+        -:   46:int partition(void *, int, int);
+        -:   47:
+        -:   48:void sort_queue(Queue_struct *queue, int, int);
+        -:   49:
+        -:   50:void swap(int *, int *);
+        -:   51:
+        -:   52:void* peak_top(Queue_struct *queue);
+        -:   53:
+        -:   54:Node* get_head(Queue_struct *queue);
+        -:   55:
+        -:   56:void* get_aircraft_index(Queue_struct* queue, int index);
+        -:   57:
+        -:   58:Node* get_node_index(Queue_struct* queue, int index);
+        -:   59:
+        -:   60:void sort_queue(Queue_struct *queue);
+        -:   61:
+        -:   62:void move_aircrafts_(Queue_struct* queue);
+        -:   63:
+        -:   64:void new_sort(Queue_struct* queue);
+        -:   65:
+        -:   66:class Queue
+        -:   67:{
+        -:   68:    Queue_struct* queue = create_queue();
+        -:   69:
+        -:   70:public:
+        -:   71:
+        -:   72:    Queue()= default;
+        -:   73:
+        -:   74:    auto peak()
+        -:   75:    {
+        -:   76:        return *(Aircraft*)peak_top(queue);
+        -:   77:    }
+        -:   78:
+        -:   79:    void enQueue(Aircraft* aircraft)
+        -:   80:    {
+        -:   81:        enqueue(queue,aircraft,aircraft->calculate_priority());
+        -:   82:        //sorted_enqueue(queue, aircraft, aircraft->calculate_priority());
+        -:   83:    }
+        -:   84:
+        -:   85:    void deQueue()
+        -:   86:    {
+        -:   87:        printf("Freeing node: %i\n",queue->front);
+        -:   88:        ((Aircraft*)queue->nodeList[queue->front].data)->free_aircraft();
+        -:   89:        delete (Aircraft*)queue->nodeList[queue->front].data;
+        -:   90:
+        -:   91:        dequeue(queue);
+        -:   92:    }
+        -:   93:
+function _ZN5Queue4sizeEv called 5020 returned 100% blocks executed 100%
+     5020:   94:    int size()
+     5020:   94-block  0
+        -:   95:    {
+     5020:   96:        return queue_size(queue);
+     5020:   96-block  0
+call    0 returned 5020
+        -:   97:    }
+        -:   98:
+        -:   99:    int head()
+        -:  100:    {
+        -:  101:        return queue->front;
+        -:  102:    }
+        -:  103:
+function _ZNK5Queue30get_aircraft_position_by_indexEi called 7012 returned 100% blocks executed 100%
+     7012:  104:    Position get_aircraft_position_by_index(int index) const {
+     7012:  104-block  0
+     7012:  105:        return ((Aircraft*)get_aircraft_index(queue,index))->get_position();
+     7012:  105-block  0
+call    0 returned 7012
+call    1 returned 7012
+        -:  106:    }
+        -:  107:
+        -:  108:    void move_aircraft_by_index(int index)
+        -:  109:    {
+        -:  110:        ((Aircraft*)get_aircraft_index(queue,index))->move();
+        -:  111:    }
+        -:  112:
+        -:  113:    void apply_changes_to_aircrafts_by_index(int index)
+        -:  114:    {
+        -:  115:        ((Aircraft*)get_aircraft_index(queue,index))->apply_random_changes();
+        -:  116:    }
+        -:  117:
+        -:  118:    void calculate_priority_by_index(int index)
+        -:  119:    {
+        -:  120:       get_node_index(queue,index)->priority = ((Aircraft*) get_aircraft_index(queue,index))->calculate_priority();
+        -:  121:    }
+        -:  122:
+        -:  123:    void sort()
+        -:  124:    {
+        -:  125:        new_sort(queue);
+        -:  126:    }
+        -:  127:
+        -:  128:    int is_empty()
+        -:  129:    {
+        -:  130:        return is_queue_empty(queue);
+        -:  131:    }
+        -:  132:
+        -:  133:    int check_if_node_is_outside()
+        -:  134:    {
+        -:  135:        return queue->nodeList[queue->front].priority <=0;
+        -:  136:    }
+        -:  137:
+        -:  138:    void apply_changes_to_aircrafts()
+        -:  139:    {
+        -:  140:        move_aircrafts_(queue);
+        -:  141:    }
+        -:  142:
+        -:  143:};
+        -:  144:
+        -:  145:
+        -:  146:#endif //PROJECT_5_AIR_TRAFFIC_CONTROLLER_QUEUE_H

@@ -1,0 +1,464 @@
+        -:    0:Source:C:/Users/Andreas/ikt203_projects/projects/project 5 Air Traffic Controller/includes/aircraft.cpp
+        -:    0:Graph:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\includes\aircraft.cpp.gcno
+        -:    0:Data:C:\Users\Andreas\ikt203_projects\projects\project 5 Air Traffic Controller\cmake-build-debug-coverage\CMakeFiles\project_5_Air_Traffic_Controller.dir\includes\aircraft.cpp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1://
+        -:    2:// Created by Andreas on 29.09.2021.
+        -:    3://
+        -:    4:
+        -:    5:
+        -:    6:#include <cstdlib>
+        -:    7:#include <cmath>
+        -:    8:#include <cstdio>
+        -:    9:#include <random>
+        -:   10:#include <map>
+        -:   11:#include <functional>
+        -:   12:#include <iomanip>
+        -:   13:#include <chrono>
+        -:   14:#include <thread>
+        -:   15:
+        -:   16:#include "aircraft.h"
+        -:   17:
+        -:   18:
+        -:   19:using namespace std::this_thread; // sleep_for, sleep_until
+        -:   20:using namespace std::chrono; // nanoseconds, system_clock, seconds
+        -:   21:
+        -:   22:
+function _ZN8AircraftC2Ev called 50 returned 100% blocks executed 100%
+       50:   23:Aircraft::Aircraft() {
+       50:   23-block  0
+       50:   24:    aircraft = create_aircraft();
+       50:   24-block  0
+call    0 returned 50
+       50:   25:}
+        -:   26:
+function _ZN8Aircraft18calculate_priorityEv called 449 returned 100% blocks executed 100%
+      449:   27:double Aircraft::calculate_priority()
+      449:   27-block  0
+        -:   28:{
+      449:   29:    return priority(aircraft);
+      449:   29-block  0
+call    0 returned 449
+        -:   30:}
+        -:   31:
+function _ZN8Aircraft4moveEv called 399 returned 100% blocks executed 100%
+      399:   32:void Aircraft::move()
+      399:   32-block  0
+        -:   33:{
+      399:   34:    move_aircraft(aircraft);
+      399:   34-block  0
+call    0 returned 399
+      399:   35:}
+        -:   36:
+function _ZN8Aircraft20apply_random_changesEv called 399 returned 100% blocks executed 100%
+      399:   37:void Aircraft::apply_random_changes()
+      399:   37-block  0
+        -:   38:{
+      399:   39:    change_properties(aircraft);
+      399:   39-block  0
+call    0 returned 399
+      399:   40:}
+        -:   41:
+function _ZN8Aircraft12get_positionEv called 7012 returned 100% blocks executed 100%
+     7012:   42:Position Aircraft::get_position()
+     7012:   42-block  0
+        -:   43:{
+     7012:   44:    return get_position_of_aircraft(aircraft);
+     7012:   44-block  0
+call    0 returned 7012
+        -:   45:}
+        -:   46:
+        -:   47:
+        -:   48:
+function _ZN8Aircraft13free_aircraftEv called 17 returned 100% blocks executed 100%
+       17:   49:void Aircraft::free_aircraft()
+       17:   49-block  0
+        -:   50:{
+       17:   51:    free(aircraft);
+       17:   52:}
+        -:   53:
+        -:   54:
+function _Z11rand_doubledd called 341 returned 100% blocks executed 81%
+      341:   55:double rand_double(double min, double max)
+      341:   55-block  0
+        -:   56:{
+        -:   57:    // Get pseudo seed based on time since epoch
+      341:   58:    sleep_for(milliseconds(2));
+      341:   58-block  0
+call    0 returned 341
+call    1 returned 341
+branch  2 taken 341 (fallthrough)
+branch  3 taken 0 (throw)
+    %%%%%:   58-block  1
+    %%%%%:   58-block  2
+      341:   59:    std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
+      341:   59-block  0
+call    0 returned 341
+      341:   60:    auto duration = now.time_since_epoch();
+call    0 returned 341
+      341:   61:    auto seed = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
+call    0 returned 341
+branch  1 taken 341 (fallthrough)
+branch  2 taken 0 (throw)
+      341:   61-block  0
+call    3 returned 341
+        -:   62:
+        -:   63:
+        -:   64:    // Feed seed to generator
+      341:   65:    std::mt19937 double_generator(seed);
+call    0 returned 341
+branch  1 taken 341 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   66:
+        -:   67:    // Set the distribution range of numbers
+      341:   68:    std::uniform_real_distribution<> double_range(min, max);
+      341:   68-block  0
+call    0 returned 341
+branch  1 taken 341 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   69:
+        -:   70:    // Bind the range to the generator and return the first number in the binding
+      341:   71:    return std::bind(double_range, double_generator)();
+      341:   71-block  0
+call    0 returned 341
+branch  1 taken 341 (fallthrough)
+branch  2 taken 0 (throw)
+      341:   71-block  1
+call    3 returned 341
+branch  4 taken 341 (fallthrough)
+branch  5 taken 0 (throw)
+      341:   71-block  2
+      341:   71-block  3
+    %%%%%:   71-block  4
+        -:   72:}
+        -:   73:
+function _Z8rand_intii called 499 returned 100% blocks executed 81%
+      499:   74:int rand_int(int min, int max)
+      499:   74-block  0
+        -:   75:{
+        -:   76:    // Get pseudo seed based on time since epoch
+        -:   77:    //long long seed = std::chrono::system_clock::now().time_since_epoch().count();
+      499:   78:    sleep_for(milliseconds(2));
+      499:   78-block  0
+call    0 returned 499
+call    1 returned 499
+branch  2 taken 499 (fallthrough)
+branch  3 taken 0 (throw)
+    %%%%%:   78-block  1
+    %%%%%:   78-block  2
+      499:   79:    std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
+      499:   79-block  0
+call    0 returned 499
+      499:   80:    auto duration = now.time_since_epoch();
+call    0 returned 499
+      499:   81:    auto seed = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
+call    0 returned 499
+branch  1 taken 499 (fallthrough)
+branch  2 taken 0 (throw)
+      499:   81-block  0
+call    3 returned 499
+        -:   82:
+        -:   83:    // Feed seed to generator
+      499:   84:    std::mt19937 int_generator(seed);
+call    0 returned 499
+branch  1 taken 499 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   85:
+        -:   86:    // Set the distribution range of numbers
+      499:   87:    std::uniform_int_distribution<> int_range(min, max);
+      499:   87-block  0
+call    0 returned 499
+branch  1 taken 499 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   88:
+        -:   89:    // Bind the range to the generator and return the first number in the binding
+      499:   90:    return std::bind(int_range, int_generator)();
+      499:   90-block  0
+call    0 returned 499
+branch  1 taken 499 (fallthrough)
+branch  2 taken 0 (throw)
+      499:   90-block  1
+call    3 returned 499
+branch  4 taken 499 (fallthrough)
+branch  5 taken 0 (throw)
+      499:   90-block  2
+      499:   90-block  3
+    %%%%%:   90-block  4
+        -:   91:}
+        -:   92:
+        -:   93:
+function _Z15create_aircraftv called 50 returned 100% blocks executed 100%
+       50:   94:Aircraft_struct *create_aircraft()
+       50:   94-block  0
+        -:   95:{
+        -:   96:
+       50:   97:    auto * aircraft = (Aircraft_struct*)malloc(sizeof(Aircraft_struct));
+       50:   98:    if (rand_int(0,1) == 1){
+       50:   98-block  0
+call    0 returned 50
+branch  1 taken 22 (fallthrough)
+branch  2 taken 28
+       22:   99:        aircraft->position.x = rand_double(-RADIUS,RADIUS);
+       22:   99-block  0
+call    0 returned 22
+       22:  100:        aircraft->position.y = sqrt(pow(RADIUS,2.0)-pow(aircraft->position.x,2.0));
+       22:  101:        if (rand_int(0,1) == 1){
+call    0 returned 22
+branch  1 taken 14 (fallthrough)
+branch  2 taken 8
+       14:  102:            aircraft->position.y = -aircraft->position.y;
+       14:  102-block  0
+        -:  103:        }
+        -:  104:    }
+        -:  105:    else
+        -:  106:    {
+       28:  107:        aircraft->position.y = rand_double(-RADIUS,RADIUS);
+       28:  107-block  0
+call    0 returned 28
+       28:  108:        aircraft->position.x = sqrt(pow(RADIUS,2.0)-pow(aircraft->position.y,2.0));
+       28:  109:        if (rand_int(0,1) == 1){
+call    0 returned 28
+branch  1 taken 17 (fallthrough)
+branch  2 taken 11
+       17:  110:            aircraft->position.x = -aircraft->position.x;
+       17:  110-block  0
+        -:  111:        }
+        -:  112:    }
+       50:  113:    aircraft->speed = rand_double(MIN_SPEED,MAX_SPEED);
+       50:  113-block  0
+call    0 returned 50
+       50:  114:    aircraft->angle = rand_double(0,2*M_PI);
+call    0 returned 50
+        -:  115:    //printf("One: %f %f\n", aircraft->position.x,aircraft->position.y);
+        -:  116:
+       50:  117:    return aircraft;
+        -:  118:}
+        -:  119:
+function _Z11get_angle_cdddd called 449 returned 100% blocks executed 88%
+      449:  120:double get_angle_c(double x, double y, double b, double angle){
+      449:  120-block  0
+      449:  121:    if (x >= 0 && y > 0)
+      449:  121-block  0
+branch  0 taken 128 (fallthrough)
+branch  1 taken 321
+      128:  121-block  1
+branch  2 taken 58 (fallthrough)
+branch  3 taken 70
+        -:  122:    {
+        -:  123:        // Angle for first quadrant
+       58:  124:        return 2*M_PI-(asin(x/b)+M_PI/2+angle);
+       58:  124-block  0
+        -:  125:    }
+      391:  126:    else if (x < 0 && y >= 0)
+      391:  126-block  0
+branch  0 taken 321 (fallthrough)
+branch  1 taken 70
+      321:  126-block  1
+branch  2 taken 153 (fallthrough)
+branch  3 taken 168
+        -:  127:    {
+        -:  128:        // Angle for second quadrant
+      153:  129:        return 2*M_PI-(-std::abs(asin(x/b))+M_PI/2+angle);
+      153:  129-block  0
+call    0 returned 153
+        -:  130:    }
+      238:  131:    else if (x < 0 && y <= 0)
+      238:  131-block  0
+branch  0 taken 168 (fallthrough)
+branch  1 taken 70
+      168:  131-block  1
+branch  2 taken 168 (fallthrough)
+branch  3 taken 0
+        -:  132:    {
+        -:  133:        // Angle for third quadrant
+      168:  134:        return -(asin(x/b)+M_PI/2)+angle;
+      168:  134-block  0
+        -:  135:    }
+       70:  136:    else if (x >= 0 && y < 0)
+       70:  136-block  0
+branch  0 taken 70 (fallthrough)
+branch  1 taken 0
+       70:  136-block  1
+branch  2 taken 70 (fallthrough)
+branch  3 taken 0
+        -:  137:    {
+        -:  138:        // Angle for fourth quadrant
+       70:  139:        return 2*M_PI-angle+asin(x/b)+M_PI/2;
+       70:  139-block  0
+        -:  140:    }
+        -:  141:    else{
+    #####:  142:        printf("Unexpected error in the priority!\n");
+    $$$$$:  142-block  0
+call    0 never executed
+    #####:  143:        return 0;
+        -:  144:    }
+        -:  145:}
+        -:  146:
+        -:  147:
+function _Z14get_distance_addd called 449 returned 100% blocks executed 58%
+      449:  148:double get_distance_a(double b, double angle_c, double c){
+      449:  148-block  0
+        -:  149:    double abc1,abc2,sqrt1,sqrt2;
+        -:  150:
+      449:  151:    sqrt1 = pow(2*b*cos(angle_c),2.0)-4*(b*b-c*c);
+      449:  152:    sqrt2 = pow(2*b*cos(angle_c),2.0)-4*(b*b-c*c);
+        -:  153:    // Checking for imaginary numbers
+      449:  154:    if (sqrt1 >= 0)
+      449:  154-block  0
+branch  0 taken 449 (fallthrough)
+branch  1 taken 0
+      449:  155:        abc1 = (2*b*cos(angle_c) + sqrt(sqrt1))/2; // Applying the Quadratic Equation for positive
+      449:  155-block  0
+        -:  156:    else
+    #####:  157:        abc1 = -1;
+    $$$$$:  157-block  0
+        -:  158:
+      449:  159:    if (sqrt2 >= 0)
+      449:  159-block  0
+branch  0 taken 449 (fallthrough)
+branch  1 taken 0
+      449:  160:        abc2 = (2*b*cos(angle_c) - sqrt(sqrt2))/2; // Applying the Quadratic Equation for negative
+      449:  160-block  0
+        -:  161:    else
+    #####:  162:        abc2 = -1;
+    $$$$$:  162-block  0
+        -:  163:
+      449:  164:    if (abc1 >= abc2)
+      449:  164-block  0
+branch  0 taken 449 (fallthrough)
+branch  1 taken 0
+        -:  165:    {
+      449:  166:        return abc1;
+      449:  166-block  0
+        -:  167:    }
+    #####:  168:    else if (abc2 >= abc1)
+    $$$$$:  168-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  169:    {
+    #####:  170:        return abc2;
+    $$$$$:  170-block  0
+        -:  171:    }
+    #####:  172:}
+    $$$$$:  172-block  0
+        -:  173:
+        -:  174:
+        -:  175:
+        -:  176:
+        -:  177:// Gets the priority of the aircraft based on the time it takes to leave your airspace
+function _Z8priorityP13flight_struct called 449 returned 100% blocks executed 100%
+      449:  178:double priority(Aircraft_struct* aircraft)
+      449:  178-block  0
+        -:  179:{
+        -:  180:    double b,c,angle_c,distance,priority;
+        -:  181:    // Distance to aircraft from origin
+      449:  182:    b = sqrt(pow(aircraft->position.x,2.0)+pow(aircraft->position.y,2.0));
+        -:  183:    // Calculate angle C (from position of plane)
+      449:  184:    angle_c = get_angle_c(aircraft->position.x, aircraft->position.y, b, aircraft->angle);
+      449:  184-block  0
+call    0 returned 449
+        -:  185:
+        -:  186:    // Distance from origin to edge of our airspace (where the aircraft will leave)
+      449:  187:    c = RADIUS;
+        -:  188:
+        -:  189:    // Distance from aircraft to the edge of our airspace
+      449:  190:    distance = get_distance_a(b, angle_c, c);
+call    0 returned 449
+      449:  191:    priority = distance/(aircraft->speed*1.15077954)*60; // 1.15077954 is 1 knot to miles and then converting it from h to m (60)
+      449:  192:    return priority;
+        -:  193:}
+        -:  194:
+        -:  195:
+        -:  196:
+        -:  197:
+function _Z17change_propertiesP13flight_struct called 399 returned 100% blocks executed 81%
+      399:  198:void change_properties(Aircraft_struct* aircraft)
+      399:  198-block  0
+        -:  199:{
+        -:  200:    // Only 50% chance of flight changing anything
+      399:  201:    switch (rand_int(1, 4)) {
+      399:  201-block  0
+call    0 returned 399
+branch  1 taken 92
+branch  2 taken 99
+branch  3 taken 208
+       92:  202:        case 1:
+       92:  203:            aircraft->angle += rand_double(-MAX_ANGLE_CHANGE,MAX_ANGLE_CHANGE);
+       92:  203-block  0
+call    0 returned 92
+       92:  204:            if (aircraft->angle > 2*M_PI)
+branch  0 taken 1 (fallthrough)
+branch  1 taken 91
+        1:  205:                aircraft->angle = 0;
+        1:  205-block  0
+       91:  206:            else if (aircraft->angle < 0)
+       91:  206-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 91
+    #####:  207:                aircraft->angle = -aircraft->angle;
+    $$$$$:  207-block  0
+       92:  208:            break;
+       92:  208-block  0
+        -:  209:
+       99:  210:        case 2:
+       99:  211:            aircraft->speed += rand_double(-MAX_SPEED_CHANGE,MAX_SPEED_CHANGE);
+       99:  211-block  0
+call    0 returned 99
+       99:  212:            if (aircraft->speed > MAX_SPEED)
+branch  0 taken 0 (fallthrough)
+branch  1 taken 99
+    #####:  213:                aircraft->speed -= MAX_SPEED_CHANGE;
+    $$$$$:  213-block  0
+       99:  214:            else if (aircraft->speed < MIN_SPEED)
+       99:  214-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 99
+    #####:  215:                aircraft->speed += MAX_SPEED_CHANGE;
+    $$$$$:  215-block  0
+       99:  216:            break;
+       99:  216-block  0
+      208:  217:        default:
+      208:  218:            break;
+      208:  218-block  0
+        -:  219:    }
+      399:  220:}
+        -:  221:
+        -:  222:
+function _Z13move_aircraftP13flight_struct called 399 returned 100% blocks executed 100%
+      399:  223:void move_aircraft(Aircraft_struct* aircraft)
+      399:  223-block  0
+        -:  224:{
+      399:  225:    aircraft->position.x += AIRCRAFT_MOVEMENT_REDUCER*aircraft->speed*cos(aircraft->angle);
+      399:  226:    aircraft->position.y += AIRCRAFT_MOVEMENT_REDUCER*aircraft->speed*sin(aircraft->angle);
+      399:  227:}
+        -:  228:
+        -:  229:
+function _Z24get_position_of_aircraftP13flight_struct called 7012 returned 100% blocks executed 100%
+     7012:  230:Position get_position_of_aircraft(Aircraft_struct* aircraft)
+     7012:  230-block  0
+        -:  231:{
+     7012:  232:    return aircraft->position;
+     7012:  232-block  0
+        -:  233:}
+        -:  234:
+        -:  235:
+        -:  236:
+        -:  237:
+        -:  238:
+        -:  239:
+        -:  240:
+        -:  241:
+        -:  242:
+        -:  243:
+        -:  244:
+        -:  245:
+        -:  246:
+        -:  247:
+        -:  248:
+        -:  249:
+        -:  250:
+        -:  251:
+        -:  252:
+        -:  253:
+        -:  254:

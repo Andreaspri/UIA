@@ -1,0 +1,3 @@
+C:/Users/Andreas/ikt203_projects/projects/project 1 - game of life/cmake-build-debug/CMakeFiles/project_1___game_of_life.dir
+C:/Users/Andreas/ikt203_projects/projects/project 1 - game of life/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Andreas/ikt203_projects/projects/project 1 - game of life/cmake-build-debug/CMakeFiles/rebuild_cache.dir

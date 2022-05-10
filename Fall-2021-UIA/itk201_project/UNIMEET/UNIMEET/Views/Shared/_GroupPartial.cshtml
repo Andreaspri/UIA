@@ -1,0 +1,20 @@
+﻿@using System.Text.RegularExpressions
+@model IEnumerable<UNIMEET.Models.Group>
+@* Partial view to fill the sidebar with a users groups *@
+
+@foreach (var item in Model)
+{
+    Regex rgx = new Regex("[^a-zA-Z0-9-]");
+    var safeName = rgx.Replace(@item.Name, "");
+    var imagePath= @"https://avatars.dicebear.com/api/gridy/" + @safeName + ".svg";
+    
+    <tr class="noBorder">
+        <td class="noBorder">
+            <a class="nav-link text-dark uni-nav-group-list" asp-controller="Group" asp-action="Details" asp-route-id="@item.Id">
+                <span class="hovertext" data-hover="@item.Name">
+                    <img class="rounded-circle" alt="@item.Name" src="@imagePath" width="50" height="50">
+                </span>
+            </a>
+        </td>
+    </tr>
+}

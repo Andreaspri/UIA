@@ -1,0 +1,35 @@
+﻿@model UNIMEET.Models.Event
+
+<div class="col-md-12 text-center">
+    <h4>Time slots</h4>
+</div>
+
+<hr/>
+<form asp-controller="Event" asp-action="Create">
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<input type="hidden" asp-for="Id" value="@Model.Id"/>
+<input type="hidden" asp-for="Name" value="@Model.Name" />
+<input type="hidden" asp-for="Summary" value="@Model.Summary"/>
+<input type="hidden" asp-for="Description" value="@Model.Description"/>
+<input type="hidden" asp-for="DateFrom" value="@Model.DateFrom)"/>
+<input type="hidden" asp-for="DateTo" value="@Model.DateTo)"/>
+<input type="hidden" asp-for="Duration" value="@Model.Duration)"/>
+<input type="hidden" asp-for="GroupId" value="@Model.GroupId)"/>
+<tbody>
+@foreach (var window in ViewBag.dateWindow)
+{
+    <tr>
+        <td>
+            <p>Date from @window.Start.ToString() to @window.End.ToString()</p>
+        </td>
+    </tr>
+}
+</tbody>
+<input type="hidden" asp-for="EventTimeFrom"/>
+<input type="hidden" asp-for="EventTimeTo"/>
+
+<div class="form-group">
+    <input type="submit" value="Submit" class="btn btn-primary" />
+</div>
+</form>
+

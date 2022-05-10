@@ -1,0 +1,35 @@
+﻿@using Newtonsoft.Json
+@model IEnumerable<UNIMEET.Data.ApplicationUser>
+
+@{
+    var selected = JsonConvert.DeserializeObject<List<string>>(ViewBag.selected);
+}
+@foreach (var user in Model)
+{
+<tr>
+    <td>
+        @{
+            var isSelected = false;
+            foreach (var id in selected)
+            {
+                if (user.Id == id)
+                {
+                    isSelected = true;
+                }
+            }
+            if (isSelected)
+            {
+                <button class="btn btn-success" onclick="selectMember('@user.Id')">@user.Nickname</button>
+            }
+            else
+            {
+                <button class="btn btn-primary" onclick="selectMember('@user.Id')">@user.Nickname</button>
+            }
+            
+        }
+        
+    </td>
+</tr>
+}
+
+

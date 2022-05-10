@@ -1,0 +1,94 @@
+@model UNIMEET.Data.ApplicationUser
+@using System.Linq;
+@using System.Text.RegularExpressions
+@using Microsoft.CodeAnalysis.CSharp.Syntax
+@using UNIMEET.Data
+
+@* Hidden input for user id *@
+<div id="user-id" type="hidden" value="@Model.Id"></div>
+
+<div class="container">
+	<div class="row gutters">
+		<div class="col-xl-3 col-lg-3 col-md-11 col-sm-11 col-11">
+			<div class="card h-100">
+				<div class="card-body">
+					<div class="account-settings">
+						<div class="user-profile">
+							@{
+								Regex rgx = new Regex("[^a-zA-Z0-9-]");
+								var safeName = rgx.Replace(Model.Nickname, "");
+								var imagePath = @"https://avatars.dicebear.com/api/initials/" + @safeName + ".svg";
+								
+								<div class="user-avatar">
+									<img class="rounded-circle" alt="@Model.Nickname" src="@imagePath" width="50" height="50">
+								</div>
+								<h5 class="user-name">@Html.DisplayFor(model => model.Firstname) @Html.DisplayFor(model => model.Lastname)</h5>
+								<h6 class="user-name">@Html.DisplayFor(model => model.Nickname)</h6>
+								<h6 class="user-email">@Html.DisplayFor(model => model.Email)</h6>
+							}
+							
+						</div>
+						<div class="about">
+							<h6 class="about mb-2">About</h6>
+							<p>@Html.DisplayFor(model => model.About)</p>
+							<hr/>
+							<div class="form-group">
+								@if (((ApplicationUser) ViewBag.currentUser).Contacts.Contains(Model))
+								{
+									<form asp-action="RemoveContact">
+										<input asp-for="Id" type="hidden" value="@Model.Id"/>
+										<input type="submit" value="Remove contact" class="btn btn-primary"/>
+									</form>
+								}
+								else if (((ApplicationUser) ViewBag.currentUser).ContactRequestSender.Contains(Model))
+								{
+									<form asp-action="AcceptContactRequest">
+										<input asp-for="Id" type="hidden" value="@Model.Id"/>
+										<input type="submit" value="Accept request" class="btn btn-primary"/>
+									</form>
+									<br/>
+									<form asp-action="RemoveContactRequest">
+										<input asp-for="Id" type="hidden" value="@Model.Id"/>
+										<input type="submit" value="Decline request" class="btn btn-primary"/>
+									</form>
+								}
+								else if (((ApplicationUser) ViewBag.currentUser).ContactRequestReceiver.Contains(Model))
+								{
+									<p>You have sent a contact request to this user</p>
+								}
+								else if (((ApplicationUser) ViewBag.currentUser).Id == Model.Id)
+								{
+									
+								}
+								else
+								{
+									<form asp-action="NewContactRequest">
+										<input asp-for="Id" type="hidden" value="@Model.Id"/>
+										<input type="submit" value="Send contact request" class="btn btn-primary"/>
+									</form>
+								}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-9 col-lg-9 col-md-11 col-sm-11 col-11">
+			<div class="card h-100">
+				<div class="group-settings">
+					<h6 class="group">Common Groups</h6>
+				</div>
+				<div class="card-body">
+					<div class="row gutters">
+						<div id="common-groups" class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-11">
+							@* Users common groups will appear here *@
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="~/js/commonGroups.js"></script>
